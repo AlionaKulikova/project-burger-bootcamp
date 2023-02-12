@@ -1,0 +1,168 @@
+.box {
+   margin-left: 380px;
+   margin-right: 320px;
+   margin-bottom: 40px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 40px;
+   width: 1240px;
+   height: 912px;
+ }
+ 
+ .box_one {
+   height: 912px;
+   width: 600px;
+ }
+ 
+ .box_two {
+   composes: box_one;
+   display: flex;
+   flex-direction: column;
+ }
+ .menu {
+   width: 600px;
+   height: 56px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+ }
+ 
+ .button_menu {
+   padding: 0;
+   border: none;
+   font: inherit;
+   background-color: transparent;
+   height: 56px;
+   width: 200px;
+   background: #131316;
+   color: #8585ad;
+ }
+ 
+ .button_menu_one {
+   composes: button_menu;
+   background: #131316;
+   color: #f2f2f3;
+   border-bottom: 2px solid #4c4cff;
+ }
+ 
+ .button_menu_two {
+   composes: button_menu;
+   color: #f2f2f3;
+   background: #131316;
+   border-bottom: 2px solid #4c4cff;
+ }
+ 
+ .button_menu_three {
+   color: #f2f2f3;
+   background: #131316;
+   border-bottom: 2px solid #4c4cff;
+ }
+ 
+ .container {
+   margin: 0;
+   padding: 0;
+   display: flex;
+   flex-direction: column;
+   width: 600px;
+   height: 716px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   scroll-snap-type: y;
+ }
+ 
+ .container::-webkit-scrollbar {
+   height: 464px;
+   width: 8px;
+ }
+ 
+ .container::-webkit-scrollbar-track {
+   background: #2f2f37;
+ }
+ 
+ .container::-webkit-scrollbar-thumb {
+   height: 292px;
+   width: 8px;
+   background: #8585ad;
+ }
+ 
+ .buns_box {
+   width: 600px;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+ }
+ 
+ .sousy_box {
+   composes: buns_box;
+ }
+ 
+ .fillings_box {
+   composes: buns_box;
+ }
+ 
+ .info_ingredient {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 272px;
+   height: 208px;
+ }
+ 
+ .price_ingredient {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   gap: 9px;
+ }
+ 
+ .info_ingredient_text {
+   text-align: center;
+   padding: 0;
+ }
+ 
+ .top_component {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   margin-top: 100px;
+   margin-left: 32px;
+   width: 568px;
+   height: 80px;
+   background: #1c1c21;
+   border-radius: 88px 88px 40px 40px;
+ }
+ 
+ .select_components {
+   display: flex;
+   direction: column;
+   align-content: center;
+   justify-content: center;
+   gap: 16px;
+   width: 600px;
+   height: 464px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   scroll-snap-type: y;
+ }
+ 
+ .select_components::-webkit-scrollbar {
+   height: 464px;
+   width: 8px;
+ }
+ 
+ .select_components::-webkit-scrollbar-track {
+   background: #2f2f37;
+ }
+ 
+ .select_components::-webkit-scrollbar-thumb {
+   height: 292px;
+   width: 8px;
+   background: #8585ad;
+ }
+ 
+ .bottom_component {
+   margin-bottom: 40px;
+   width: 568px;
+   height: 80px;
+ } 
