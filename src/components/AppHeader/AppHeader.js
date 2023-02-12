@@ -3,7 +3,8 @@ import styles from "./styles.module.css";
 
 function AppHeader() {
   return (
-    <nav className={styles.header}>
+    <header className={styles.header}>
+    <nav className={styles.nav}>
       <div className=" mb-4 mt-4 mr-2">
         <Button htmlType="button" type="secondary" size="large" className={styles.button_style}>
           <div className=" ml-5">
@@ -30,6 +31,7 @@ function AppHeader() {
         </Button>
       </div>
     </nav>
+    </header>
   );
 }
 

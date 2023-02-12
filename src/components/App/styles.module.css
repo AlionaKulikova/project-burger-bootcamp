@@ -1,0 +1,11 @@
+.box {
+   margin-left: 380px;
+   margin-right: 320px;
+   margin-bottom: 40px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 40px;
+   width: 1240px;
+   height: 912px;
+ }

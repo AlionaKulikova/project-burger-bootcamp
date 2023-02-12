@@ -1,0 +1,8 @@
+.lightpurple {
+  border-radius: 80px;
+  box-shadow: 10px 5px 5px rgba(190, 24, 193, 0.5);
+}
+
+li {
+  list-style-type: none;
+}

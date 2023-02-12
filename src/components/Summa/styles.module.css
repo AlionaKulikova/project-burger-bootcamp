@@ -1,0 +1,50 @@
+  .box_two {
+     height: 912px;
+   width: 600px;
+   display: flex;
+   flex-direction: column;
+ }
+  
+ .select_components {
+   display: flex;
+   direction: column;
+   align-content: center;
+   justify-content: center;
+   gap: 16px;
+   width: 600px;
+   height: 464px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   scroll-snap-type: y;
+ }
+ 
+ .select_components::-webkit-scrollbar {
+   height: 464px;
+   width: 8px;
+ }
+ 
+ .select_components::-webkit-scrollbar-track {
+   background: #2f2f37;
+ }
+ 
+ .select_components::-webkit-scrollbar-thumb {
+   height: 292px;
+   width: 8px;
+   background: #8585ad;
+ }
+ .box_two_filling{
+  display: flex; 
+  flex-direction: column;
+   gap: 16px;
+ }
+ .checkout_box{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: right;
+   align-items: center;
+ }
+ .sum {
+  display: flex;
+   flex-direction: row;
+ }

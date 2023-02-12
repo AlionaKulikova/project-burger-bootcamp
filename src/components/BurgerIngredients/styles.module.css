@@ -1,19 +1,63 @@
-.info_ingredient {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 272px;
-   height: 208px;
+ .box_one {
+   height: 912px;
+   width: 600px;
  }
- 
- .price_ingredient {
+
+ .menu {
+   width: 600px;
+   height: 56px;
    display: flex;
    flex-direction: row;
    justify-content: center;
-   gap: 9px;
  }
  
- .info_ingredient_text {
-   text-align: center;
+ 
+ .container {
+   margin: 0;
    padding: 0;
- } 
+   display: flex;
+   flex-direction: column;
+   width: 600px;
+   height: 716px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   scroll-snap-type: y;
+ }
+ 
+ .container::-webkit-scrollbar {
+   height: 464px;
+   width: 8px;
+ }
+ 
+ .container::-webkit-scrollbar-track {
+   background: #2f2f37;
+ }
+ 
+ .container::-webkit-scrollbar-thumb {
+   height: 292px;
+   width: 8px;
+   background: #8585ad;
+ }
+ 
+ .buns_box {
+   width: 600px;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+ }
+ 
+ .sousy_box {
+   composes: buns_box;
+ }
+ 
+ .fillings_box {
+   composes: buns_box;
+ }
+
+ .part_ingredients {
+  text-decoration: none;
+   text-align: center; 
+ }
+ .tab_menu {
+  display: flex;
+ }

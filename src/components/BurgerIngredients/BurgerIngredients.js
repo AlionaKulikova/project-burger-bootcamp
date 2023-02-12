@@ -1,130 +1,58 @@
 import React from "react";
-import { CurrencyIcon, CloseIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./styles.module.css";
-import IngredientDetails from "../IngredientDetails/IngredientDetails";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { DraggableCard } from "../DraggableCard/DraggableCard.js";
 
-const BurgerIngredients = ({ data }) => {
-  React.useEffect(() => {
-    const close = (e) => {
-      if (e.keyCode === 27) {
-        {
-          closeIngredientDetails();
-        }
-      }
-    };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, []);
+function BurgerIngredients() {
+  const { feed } = useSelector((state) => ({
+    feed: state.dataReducer.feed,
+  }));
 
-  const image = <img src={data.image} alt={data.name} />;
-
-  const image_large = <img src={data.image_large} />;
-
-  const modalIngredientRef = React.useRef();
-
-  const openIngredientDetails = () => {
-    modalIngredientRef.current.openIngredientDetails();
-  };
-
-  const closeIngredientDetails = () => {
-    modalIngredientRef.current.closeIngredientDetails();
-  };
+  const [current, setCurrent] = React.useState("one");
 
   return (
-    <div className="ml=4 mt=6 mr=6 mb=10">
-      <div className={styles.info_ingredient} onClick={openIngredientDetails}>
-        <div className="ml=4">
-          {" "}
-          <div style={{ position: "relative" }}>
-            <Counter count={data.__v} size="default" extraClass="m-1" />
+    <div className={styles.box_one}>
+      <div className="mt-10 mb-5">
+        <p className="text text_type_main-large">Соберите бургер</p>
+      </div>
+      <div className="mb-10">
+        <div className={styles.menu}>
+          <div className={styles.tab_menu}>
+            <a href="#buns" className={styles.part_ingredients}>
+              <Tab value="one" active={current === "one"} onClick={setCurrent}>
+                <p className="text text_type_main-medium">Булки</p>
+              </Tab>
+            </a>
+            <a href="#sousy" className={styles.part_ingredients}>
+              <Tab value="two" active={current === "two"} onClick={setCurrent}>
+                <p className="text text_type_main-medium">Соусы</p>
+              </Tab>
+            </a>
+            <a href="#fillings" className={styles.part_ingredients}>
+              <Tab value="three" active={current === "three"} onClick={setCurrent}>
+                <p className="text text_type_main-medium">Начинки</p>
+              </Tab>
+            </a>
           </div>
-          {image}
-        </div>
-        <div className={styles.price_ingredient}>
-          <div className="mt=1 mb=1">
-            <p className="text text_type_digits-default">{data.price}</p>
-          </div>
-          <div>
-            {" "}
-            <CurrencyIcon type="primary" />
-          </div>
-        </div>
-        <div className={styles.info_ingredient_text}>
-          <p className="text text_type_main-small">{data.name}</p>
         </div>
       </div>
-      <IngredientDetails ref={modalIngredientRef}>
-        <div className="mt-10" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", width: "640px", height: "64px" }}>
-          <div>
-            <p className="text text_type_digits-medium">Детали ингредиента</p>
-          </div>
-          <div>
-            <CloseIcon type="primary" onClick={() => modalIngredientRef.current.close()} />
-          </div>
+      <div className={styles.container}>
+        <div id="buns">
+          <h2>Булки</h2>
+          <div className={styles.buns_box}> {feed.map((card, index) => card.type === "bun" && <DraggableCard key={index} data={card} />)}</div>
         </div>
-        <div className="mb-4">{image_large}</div>
-        <div className="mb-8">
-          <p className="text text_type_main-medium"> {data.name}</p>
+        <div id="sousy">
+          <h2>Соусы</h2>
+          <div className={styles.sousy_box}> {feed.map((card, index) => card.type === "sauce" && <DraggableCard key={index} data={card} />)}</div>
         </div>
-        <div className="mb-15" style={{ display: "flex", gap: "20px" }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div>
-              <p className="text text_type_main-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                Калории,ккал
-              </p>
-            </div>
-            <div>
-              <p className="text text_type_digits-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                {data.calories}
-              </p>
-            </div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div>
-              {" "}
-              <p className="text text_type_main-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                Белки, г
-              </p>
-            </div>
-            <div>
-              <p className="text text_type_digits-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                {data.proteins}
-              </p>
-            </div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div>
-              <p className="text text_type_main-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                Жиры, г{" "}
-              </p>
-            </div>
-            <div>
-              <p className="text text_type_digits-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                {data.fat}
-              </p>
-            </div>
-          </div>
-          <div>
-            <div>
-              <p className="text text_type_main-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                Углеводы, г{" "}
-              </p>
-            </div>
-            <div>
-              <p className="text text_type_digits-default text_color_inactive" style={{ display: "flex", justifyContent: "center" }}>
-                {data.carbohydrates}
-              </p>
-            </div>
-          </div>
+        <div id="fillings">
+          <h2>Начинки</h2>
+          <div className={styles.fillings_box}> {feed.map((card, index) => card.type === "main" && <DraggableCard key={index} data={card} />)}</div>
         </div>
-      </IngredientDetails>
+      </div>
     </div>
   );
-};
-
-BurgerIngredients.propTypes = {
-  data: PropTypes.array,
-};
+}
 
 export default BurgerIngredients;
