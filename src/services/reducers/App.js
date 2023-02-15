@@ -1,4 +1,4 @@
-import { GET_FEED, GET_FEED_FAILED, GET_FEED_SUCCESS } from "../actions/App.js";
+import { GET_FEED, GET_FAILED, GET_FEED_SUCCESS } from "../actions/App.js";
 
 const initialState = {
   feedRequest: false,
@@ -26,7 +26,7 @@ export const dataReducer = (state = initialState, action) => {
         feedRequest: false,
       };
     }
-    case GET_FEED_FAILED: {
+    case GET_FAILED: {
       return {
         ...state,
         feedFailed: true,

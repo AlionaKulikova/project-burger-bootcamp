@@ -3,12 +3,6 @@
     flex-direction: column;
     align-items: center; 
 }
-.close_order_modal {
-    display: flex;
-     align-self: right;
-      margin-left: 659px;
-       margin-bottom: 39px; 
-}
 
 .icon_order_modal {
     width: 120px;

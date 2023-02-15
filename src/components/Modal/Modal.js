@@ -1,13 +1,12 @@
 import React, { forwardRef, useImperativeHandle } from "react";
+import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
-import styles from "./styles.module.css";
-import { useDispatch } from "react-redux";
-import { DELETE_INGREDIENT_DETAL } from "../../services/actions/BurgerIngredient";
+import styles from "./styles.module.css";;
 
 const Modal = forwardRef((props, ref) => {
-  const dispatch = useDispatch();
+
   const [display, setDisplay] = React.useState(false);
   React.useEffect(() => {
     const close = (evt) => {
@@ -24,8 +23,6 @@ const Modal = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => {
     return {
       openModal: () => open(),
-      closeModal: () => close(),
-      close: () => close(),
     };
   });
 
@@ -33,11 +30,6 @@ const Modal = forwardRef((props, ref) => {
     setDisplay(true);
   };
   const close = () => {
-    dispatch(
-      {
-        type: DELETE_INGREDIENT_DETAL,
-      },
-    )
     setDisplay(false);
   };
 
@@ -45,7 +37,13 @@ const Modal = forwardRef((props, ref) => {
     return ReactDOM.createPortal(
       <div className={styles.modal_wrapper}>
         <ModalOverlay close={close} />
-        <div className={styles.modal_box}>{props.children}</div>
+
+        <div className={styles.modal_box}>
+          <div className={`${styles.close_order_modal} mt-15 mr-10`}>
+            <CloseIcon type="primary" onClick={() => close()} />
+          </div>
+          {props.children}
+        </div>
       </div>,
       document.getElementById("modal_root")
     );
@@ -54,7 +52,7 @@ const Modal = forwardRef((props, ref) => {
 });
 
 Modal.propTypes = {
-  props: PropTypes.object,
+  data: PropTypes.object,
 };
 
 export default Modal;

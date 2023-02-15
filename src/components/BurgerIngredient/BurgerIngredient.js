@@ -11,18 +11,18 @@ export const BurgerIngredient = ({ data }) => {
   const { ingredients } = useSelector((state) => ({
     ingredients: state.dataConstructor,
   }));
-  const dataIngredient =  data ;
+  const dataIngredient = data;
   const ingredient = { data };
   const idBurgerIngredient = ingredient.data._id;
   const counterIngredient = ingredient.data.__v;
   const counter = getCount(idBurgerIngredient, ingredients, counterIngredient);
 
   function getCount(evt, item, counterIngredient) {
-    var counterIngredient = 0;
+    let i = 0;
     {
-      item.map((card) => (card.id.data._id === evt ? (counterIngredient = counterIngredient + 1) : counterIngredient));
+      item.map((card) => (card.id.data._id === evt ? (i = i + 1) : counterIngredient));
     }
-    return counterIngredient;
+    return i;
   }
 
   const image = <img src={data.image} alt={data.name} />;
@@ -35,9 +35,9 @@ export const BurgerIngredient = ({ data }) => {
         dataIngredient,
       },
     )
-    modalIngredientRef.current.openModal();  
+    modalIngredientRef.current.openModal();
   };
- 
+
   return (
     <div>
       <div className="ml=4 mt=6 mr=6 mb=10">

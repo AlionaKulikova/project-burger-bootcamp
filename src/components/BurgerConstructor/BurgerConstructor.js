@@ -57,13 +57,13 @@ export const BurgerConstructor = () => {
   return (
     <div className={styles.box_two}>
       <div className={`${styles.box_two_filling} mt-25`}>
-        <div className="ml-8">
-          <div className="ml-8">{dataconstructor.map((item) => item.id.data.type === "bun" && <ConstructorElement type="top" isLocked={true} text={item.id.data.name} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
+        <div className="mr-4">
+          <div className="ml-8">{dataconstructor.map((item) => item.id.data.type === "bun" && <ConstructorElement key={item.id.data._id} type="top" isLocked={true} text={`${item.id.data.name}` + `(верх)`} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
         </div>
         <div ref={drop} className={styles.select_components}>
           <div>{dataconstructor.map((card, index) => card.id.data.type !== "bun" && <ConstructorComponent key={card.randomId} data={card} draggable={true} index={index} />)}</div>
         </div>
-        <div className="ml-8">{dataconstructor.map((item) => item.id.data.type === "bun" && <ConstructorElement type="bottom" isLocked={true} text={item.id.data.name} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
+        <div className="ml-8">{dataconstructor.map((item) => item.id.data.type === "bun" && <ConstructorElement key={item.id.data._id} type="bottom" isLocked={true} text={`${item.id.data.name}` + `(низ)`} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
       </div>
       <div className={`${styles.checkout_box} mt-10 mr-4`}>
         <Summa sum={sumIngredients} />

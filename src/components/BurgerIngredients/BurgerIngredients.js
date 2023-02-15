@@ -5,11 +5,33 @@ import { useSelector } from "react-redux";
 import { DraggableCard } from "../DraggableCard/DraggableCard.js";
 
 function BurgerIngredients() {
+
   const { feed } = useSelector((state) => ({
     feed: state.dataReducer.feed,
   }));
 
   const [current, setCurrent] = React.useState("one");
+
+  const box = document.getElementById("box");
+  const buns = document.getElementById("buns");
+  const sousy = document.getElementById("sousy");
+  const fillings = document.getElementById("fillings");
+
+  const scrolling = () => {
+    const positionBuns = buns && box && Math.abs(buns.getBoundingClientRect().top - box.getBoundingClientRect().top);
+    const positionSousy = sousy && box && Math.abs(sousy.getBoundingClientRect().top - box.getBoundingClientRect().top);
+    const positionFillings = fillings && box && Math.abs(fillings.getBoundingClientRect().top - box.getBoundingClientRect().top);
+    if (positionBuns && positionSousy && positionFillings &&
+      positionBuns < positionSousy &&
+      positionBuns < positionFillings) { setCurrent("one") }
+    if (positionBuns && positionSousy && positionFillings &&
+      positionSousy < positionFillings
+      &&
+      positionSousy < positionBuns) { setCurrent("two") }
+    if (positionBuns && positionSousy && positionFillings &&
+      positionFillings < positionSousy &&
+      positionFillings < positionBuns) { setCurrent("three") }
+  }
 
   return (
     <div className={styles.box_one}>
@@ -30,14 +52,14 @@ function BurgerIngredients() {
               </Tab>
             </a>
             <a href="#fillings" className={styles.part_ingredients}>
-              <Tab value="three" active={current === "three"} onClick={setCurrent}>
+              <Tab value="three" active={current === "three"} onClick={setCurrent} >
                 <p className="text text_type_main-medium">Начинки</p>
               </Tab>
             </a>
           </div>
         </div>
       </div>
-      <div className={styles.container}>
+      <div className={styles.container} id="box" onScroll={scrolling}>
         <div id="buns">
           <h2>Булки</h2>
           <div className={styles.buns_box}> {feed.map((card, index) => card.type === "bun" && <DraggableCard key={index} data={card} />)}</div>

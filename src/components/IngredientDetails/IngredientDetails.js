@@ -1,25 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import styles from "./styles.module.css";
 
-const IngredientDetails = ({ modalIngredientRef }) => {
-
+const IngredientDetails = () => {
   const { dataIngredient } = useSelector((state) => ({
     dataIngredient: state.dataIngredientsReducer,
   }));
-  console.log(dataIngredient);
 
-  const image_large = <img src={dataIngredient.dataIngredient.image_large} />;
+  const image_large = <img src={dataIngredient.dataIngredient.image_large} alt={dataIngredient.dataIngredient.name} />;
   return (
     <div className={styles.ingredient_detals_modal}>
       <div className={`${styles.ingredient_header} mt-10`}>
         <div>
           <p className="text text_type_digits-medium">Детали ингредиента</p>
-        </div>
-        <div>
-          <CloseIcon type="primary" onClick={() => modalIngredientRef.current.close()} />
         </div>
       </div>
       <div className="mb-4">{image_large}</div>
@@ -63,6 +57,10 @@ const IngredientDetails = ({ modalIngredientRef }) => {
       </div>
     </div>
   );
+};
+
+IngredientDetails.propTypes = {
+  modalIngredientRef: PropTypes.object.isRequired,
 };
 
 export default IngredientDetails;

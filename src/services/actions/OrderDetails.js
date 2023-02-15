@@ -1,8 +1,11 @@
+import { config } from './App.js';
+import { checkResponse } from "../../utils/utils.js";
 export const POST_DATA = "POST_DATA";
-export const GET_POST_FAILED = "GET_POST_FAILED";
+export const GET_FAILED = "GET_FAILED";
 export const GET_POST_SUCCESS = "GET_POST_SUCCESS";
 
 export function sendData(idConstructorForPost) {
+
   const idData = { ingredients: idConstructorForPost };
 
   return function (dispatch) {
@@ -11,23 +14,12 @@ export function sendData(idConstructorForPost) {
       text: "по умолчанию post",
     });
 
-    fetch("https://norma.nomoreparties.space/api/orders/", {
+    fetch(`${config.baseUrl}/orders/`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: config.headers,
       body: JSON.stringify(idData),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(
-          dispatch({
-            type: GET_POST_FAILED,
-          })
-        );
-      })
+      .then(checkResponse)
       .then((data) =>
         dispatch({
           type: GET_POST_SUCCESS,
@@ -36,7 +28,7 @@ export function sendData(idConstructorForPost) {
       )
       .catch((err) => {
         dispatch({
-          type: GET_POST_FAILED,
+          type: GET_FAILED,
         });
       });
   };

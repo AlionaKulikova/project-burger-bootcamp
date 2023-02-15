@@ -38,9 +38,6 @@ export const ConstructorComponent = (props) => {
       const dragIndex = item.index;
       const hoverIndex = index;
       if (dragIndex === hoverIndex) {
-        console.log(`dragIndex === hoverIndex`);
-        console.log(dragIndex);
-        console.log(hoverIndex);
         return;
       }
       const hovergetBounding = ref.current.getBoundingClientRect();
@@ -80,6 +77,12 @@ export const ConstructorComponent = (props) => {
       </div>
     </li>
   );
+};
+
+ConstructorComponent.propTypes = {
+  data: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired
+
 };
 
 export default ConstructorComponent;
