@@ -62,15 +62,15 @@ function BurgerIngredients() {
       <div className={styles.container} id="box" onScroll={scrolling}>
         <div id="buns">
           <h2>Булки</h2>
-          <div className={styles.buns_box}> {feed.map((card, index) => card.type === "bun" && <DraggableCard key={index} data={card} />)}</div>
+          <div className={styles.buns_box}> {feed.map((card) => card.type === "bun" && <DraggableCard key={card._id} data={card} />)}</div>
         </div>
         <div id="sousy">
           <h2>Соусы</h2>
-          <div className={styles.sousy_box}> {feed.map((card, index) => card.type === "sauce" && <DraggableCard key={index} data={card} />)}</div>
+          <div className={styles.sousy_box}> {feed.map((card) => card.type === "sauce" && <DraggableCard key={card._id} data={card} />)}</div>
         </div>
         <div id="fillings">
           <h2>Начинки</h2>
-          <div className={styles.fillings_box}> {feed.map((card, index) => card.type === "main" && <DraggableCard key={index} data={card} />)}</div>
+          <div className={styles.fillings_box}> {feed.map((card) => card.type === "main" && <DraggableCard key={card._id} data={card} />)}</div>
         </div>
       </div>
     </div>

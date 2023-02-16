@@ -8,6 +8,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,19 +22,15 @@ function App() {
   }));
 
   return (
-    <div className="page">
+    <div className={styles.page}>
       <AppHeader />
-      <div>
-        {feedRequest && "Загрузка..."}
-        {feedFailed && "Произошла ошибка"}
-        {!feedRequest && !feedFailed && feed.length && (
-          <div className={styles.box}>
-            <DndProvider backend={HTML5Backend}>
-              <Main />
-            </DndProvider>
-          </div>
-        )}
-      </div>
+      {feedRequest && "Загрузка..."}
+      {feedFailed && "Произошла ошибка"}
+      {!feedRequest && !feedFailed && feed.length && (
+        <DndProvider backend={HTML5Backend}>
+          <Main />
+        </DndProvider>
+      )}
     </div>
   );
 }

@@ -11,12 +11,20 @@ import { Summa } from "../Summa/Summa.js";
 
 export const BurgerConstructor = () => {
 
+  const [isOrderModalOpen, setIsOrderModalOpen] = React.useState(false);
+
+  const openModal = () => {
+    setIsOrderModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsOrderModalOpen(false);
+  };
+
   const { dataconstructor } = useSelector((state) => ({
     dataconstructor: state.dataConstructor,
   }));
   const dispatch = useDispatch();
   const board = "box";
-  const randomId = getRandomInt(1000);
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -28,6 +36,7 @@ export const BurgerConstructor = () => {
       isDrop: monitor.isOver(),
     }),
     drop(itemId) {
+      const randomId = getRandomInt(1000);
       dispatch(
         {
           type: ADD_CONSTRUCTOR_COMPONENT,
@@ -47,13 +56,6 @@ export const BurgerConstructor = () => {
     return i;
   });
 
-  const modalOrderRef = React.useRef();
-  const closeModal = () => {
-    modalOrderRef.current.closeModal();
-  };
-  const openModal = () => {
-    modalOrderRef.current.openModal();
-  };
   return (
     <div className={styles.box_two}>
       <div className={`${styles.box_two_filling} mt-25`}>
@@ -73,9 +75,10 @@ export const BurgerConstructor = () => {
           </Button>
         </div>
       </div>
-      <Modal ref={modalOrderRef}>
-        <OrderDetails modalOrderRef={modalOrderRef} closeMain={closeModal} />
-      </Modal>
+      {isOrderModalOpen &&
+        <Modal closeModal={closeModal}>
+          <OrderDetails />
+        </Modal>}
     </div>
   );
 };

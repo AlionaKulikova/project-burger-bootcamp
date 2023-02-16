@@ -6,8 +6,23 @@ import PropTypes from "prop-types";
 import IngredientDetails from "../IngredientDetails/IngredientDetails.js";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_INGREDIENT_DETAL } from "../../services/actions/BurgerIngredient";
+import { DELETE_INGREDIENT_DETAL } from "../../services/actions/BurgerIngredient";
 
 export const BurgerIngredient = ({ data }) => {
+
+  const [isIngredientsModalOpen, setIsIngredientsModalOpen] = React.useState(false);
+  const dispatch = useDispatch();
+
+  const closeModal = () => {
+    setIsIngredientsModalOpen(false);
+    dispatch(
+      {
+        type: DELETE_INGREDIENT_DETAL,
+      },
+    )
+  };
+
+
   const { ingredients } = useSelector((state) => ({
     ingredients: state.dataConstructor,
   }));
@@ -26,8 +41,7 @@ export const BurgerIngredient = ({ data }) => {
   }
 
   const image = <img src={data.image} alt={data.name} />;
-  const modalIngredientRef = React.useRef();
-  const dispatch = useDispatch();
+
   const openModal = () => {
     dispatch(
       {
@@ -35,7 +49,7 @@ export const BurgerIngredient = ({ data }) => {
         dataIngredient,
       },
     )
-    modalIngredientRef.current.openModal();
+    setIsIngredientsModalOpen(true);
   };
 
   return (
@@ -64,9 +78,10 @@ export const BurgerIngredient = ({ data }) => {
         </div>
       </div>
 
-      <Modal ref={modalIngredientRef}>
-        <IngredientDetails modalIngredientRef={modalIngredientRef} data={data} />
-      </Modal>
+      {isIngredientsModalOpen &&
+        <Modal closeModal={closeModal}>
+          <IngredientDetails data={data} />
+        </Modal>}
     </div>
   );
 };

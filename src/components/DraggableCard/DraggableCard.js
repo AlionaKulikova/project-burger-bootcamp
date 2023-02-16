@@ -3,6 +3,7 @@ import { BurgerIngredient } from "../BurgerIngredient/BurgerIngredient.js";
 import PropTypes from "prop-types";
 
 export const DraggableCard = ({ data }) => {
+
   const [{ isDrag }, drag] = useDrag({
     type: "card",
     item: { data },

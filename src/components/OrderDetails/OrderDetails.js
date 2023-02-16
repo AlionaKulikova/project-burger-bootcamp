@@ -3,7 +3,6 @@ import done from "../../images/done.svg";
 import styles from "./styles.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { sendData } from "../../services/actions/OrderDetails";
-import PropTypes from "prop-types";
 
 const OrderDetails = () => {
 
@@ -23,7 +22,7 @@ const OrderDetails = () => {
   }));
 
   if (postRequest) {
-    return <p>Загрузка...</p>
+    return <div className={styles.load}>Загрузка...</div>
   }
 
   return (
@@ -48,10 +47,6 @@ const OrderDetails = () => {
       </div>
     </div>
   );
-};
-
-OrderDetails.propTypes = {
-  modalOrderRef: PropTypes.object.isRequired,
 };
 
 export default OrderDetails;

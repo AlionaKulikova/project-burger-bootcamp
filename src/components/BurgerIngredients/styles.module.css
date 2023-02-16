@@ -10,8 +10,7 @@
    flex-direction: row;
    justify-content: center;
  }
- 
- 
+
  .container {
    margin: 0;
    padding: 0;
@@ -23,41 +22,42 @@
    overflow-x: hidden;
    scroll-snap-type: y;
  }
- 
+
  .container::-webkit-scrollbar {
    height: 464px;
    width: 8px;
  }
- 
+
  .container::-webkit-scrollbar-track {
    background: #2f2f37;
  }
- 
+
  .container::-webkit-scrollbar-thumb {
    height: 292px;
    width: 8px;
    background: #8585ad;
  }
- 
+
  .buns_box {
    width: 600px;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
  }
- 
+
  .sousy_box {
    composes: buns_box;
  }
- 
+
  .fillings_box {
    composes: buns_box;
  }
 
  .part_ingredients {
-  text-decoration: none;
-   text-align: center; 
+   text-decoration: none;
+   text-align: center;
  }
+
  .tab_menu {
-  display: flex;
+   display: flex;
  }

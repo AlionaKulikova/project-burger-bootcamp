@@ -7,9 +7,6 @@ const initialState = {
 };
 
 export const dataReducer = (state = initialState, action) => {
-  console.log(state);
-  console.log(action.type);
-  console.log(action.text);
   switch (action.type) {
     case GET_FEED: {
       return {

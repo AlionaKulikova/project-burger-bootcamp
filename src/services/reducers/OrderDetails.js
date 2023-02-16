@@ -7,7 +7,6 @@ const initialState = {
 }
 
 export const postReducer = (state = initialState, action) => {
-
   switch (action.type) {
     case POST_DATA: {
       return {
@@ -17,7 +16,6 @@ export const postReducer = (state = initialState, action) => {
       };
     }
     case GET_POST_SUCCESS: {
-
       return {
         ...state,
         dataPost: action.dataPost,
@@ -26,7 +24,6 @@ export const postReducer = (state = initialState, action) => {
     }
 
     case GET_FAILED: {
-
       return {
         ...state,
         postFailed: true,

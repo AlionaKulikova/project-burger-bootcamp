@@ -1,18 +1,17 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React from "react";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
-import styles from "./styles.module.css";;
+import styles from "./styles.module.css";
 
-const Modal = forwardRef((props, ref) => {
+const Modal = ({ children, closeModal }) => {
 
-  const [display, setDisplay] = React.useState(false);
   React.useEffect(() => {
     const close = (evt) => {
       if (evt.key === "Escape") {
         {
-          setDisplay(false);
+          closeModal();
         }
       }
     };
@@ -20,39 +19,23 @@ const Modal = forwardRef((props, ref) => {
     return () => window.removeEventListener("keydown", close);
   }, []);
 
-  useImperativeHandle(ref, () => {
-    return {
-      openModal: () => open(),
-    };
-  });
-
-  const open = () => {
-    setDisplay(true);
-  };
-  const close = () => {
-    setDisplay(false);
-  };
-
-  if (display) {
-    return ReactDOM.createPortal(
-      <div className={styles.modal_wrapper}>
-        <ModalOverlay close={close} />
-
-        <div className={styles.modal_box}>
-          <div className={`${styles.close_order_modal} mt-15 mr-10`}>
-            <CloseIcon type="primary" onClick={() => close()} />
-          </div>
-          {props.children}
+  return ReactDOM.createPortal(
+    <div className={styles.modal_wrapper}>
+      <ModalOverlay close={closeModal} />
+      <div className={styles.modal_box}>
+        <div className={`${styles.close_order_modal} mt-15 mr-10`}>
+          <CloseIcon type="primary" onClick={closeModal} />
         </div>
-      </div>,
-      document.getElementById("modal_root")
-    );
-  }
-  return null;
-});
+        {children}
+      </div>
+    </div>,
+    document.getElementById("modal_root")
+  );
+};
 
 Modal.propTypes = {
-  data: PropTypes.object,
+  children: PropTypes.element.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default Modal;

@@ -19,7 +19,6 @@ export function getFeed() {
 
     fetch(`${config.baseUrl}/ingredients`)
       .then(checkResponse)
-
       .then((data) =>
         dispatch({
           type: GET_FEED_SUCCESS,
