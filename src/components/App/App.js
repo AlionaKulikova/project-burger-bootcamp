@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getFeed } from "../../services/actions/App.js";
 import AppHeader from "../AppHeader/AppHeader.js";
-import Main from "../Main/Main.js";
+import { Main } from "../Main/Main.js"
+import styles from "./styles.module.css";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
-  const [state, setState] = React.useState({
-    isLoading: false,
-    hasError: false,
-    datas: [],
-  });
 
-  const getData = () => {
-    setState({ ...state, hasError: false, isLoading: true });
-    fetch("https://norma.nomoreparties.space/api/ingredients")
-      .then((res) => res.json())
-      .then((datas) => setState({ ...state, datas: datas.data, isLoading: false }))
-      .catch((e) => {
-        setState({ ...state, hasError: true, isLoading: false });
-      });
-  };
-  React.useEffect(() => {
-    getData();
-  }, []);
+  const dispatch = useDispatch();
 
-  const { datas, isLoading, hasError } = state;
+  useEffect(() => {
+    dispatch(getFeed());
+  }, [dispatch]);
+
+  const { feed, feedRequest, feedFailed } = useSelector((state) => ({
+    feed: state.dataReducer.feed,
+    feedRequest: state.dataReducer.feedRequest,
+    feedFailed: state.dataReducer.feedFailed,
+  }));
 
   return (
-    <div>
+    <div className={styles.page}>
       <AppHeader />
-      <div>
-        {isLoading && "Загрузка..."}
-        {hasError && "Произошла ошибка"}
-        {!isLoading && !hasError && datas.length && <Main data={datas} />}
-      </div>
+      {feedRequest && "Загрузка..."}
+      {feedFailed && "Произошла ошибка"}
+      {!feedRequest && !feedFailed && feed.length && (
+        <DndProvider backend={HTML5Backend}>
+          <Main />
+        </DndProvider>
+      )}
     </div>
   );
 }
