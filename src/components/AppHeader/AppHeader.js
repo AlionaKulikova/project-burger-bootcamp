@@ -1,34 +1,76 @@
-import { Logo, Button, BurgerIcon, ListIcon, ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Logo, BurgerIcon, ListIcon, ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./styles.module.css";
+import { NavLink, useLocation } from 'react-router-dom';
 
-function AppHeader() {
+export function AppHeader() {
+
+  const location = useLocation();
+  let activeStyle = {
+    textDecoration: "none",
+    display: "flex",
+    flexDirection: "row nowrap",
+    alignItems: "center",
+    gap: "8px",
+    background: "#1c1c21",
+    width: "179px",
+    height: "56px",
+    border: "none",
+    color: "white",
+  };
+
+  let noActiveClassName = {
+    textDecoration: "none",
+    display: "flex",
+    flexDirection: "row nowrap",
+    alignItems: "center",
+    gap: "8px",
+    background: "#1c1c21",
+    width: "179px",
+    height: "56px",
+    border: "none",
+    color: "#8585AD",
+  };
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
         <div className=" mb-4 mt-4 mr-2">
-          <Button htmlType="button" type="secondary" size="large" className={styles.button_style}>
+          <NavLink
+            to="/"
+            style={({ isActive }) =>
+              isActive ? activeStyle : noActiveClassName
+            }>
             <div className=" ml-5">
-              <BurgerIcon type="primary" />
+              <BurgerIcon type={location.pathname === "/" ? "primary" : "secondary"} />
             </div>
             <div>
-              <p className="text text_type_main-small">Конструктор</p>
+              <p>Конструктор</p>
             </div>
-          </Button>
+          </NavLink>
         </div>
         <div className="mt-4 mb-4">
-          <Button htmlType="button" type="secondary" size="large" className={styles.button_style}>
-            <ListIcon type="secondary" />
-            <p className="text text_type_main-default text_color_inactive">Лента заказов</p>
-          </Button>
+          <NavLink
+            to="/tape"
+            style={({ isActive }) =>
+              isActive ? activeStyle : noActiveClassName
+            } >
+            <ListIcon type={location.pathname === "/tape" ? "primary" : "secondary"} />
+            <p>Лента заказов</p>
+          </NavLink>
         </div>
         <div className={styles.logo}>
           <Logo />
         </div>
         <div className="mt-4 mb-4">
-          <Button htmlType="button" type="secondary" size="large" className={styles.button_style}>
-            <ProfileIcon type="secondary" />
-            <p className="text text_type_main-default text_color_inactive">Личный кабинет</p>
-          </Button>
+          <NavLink
+            to="/profile"
+            style={({ isActive }) =>
+              isActive ? activeStyle : noActiveClassName} >
+            <ProfileIcon type={location.pathname === "/profile" ? "primary" : "secondary"} />
+            <p>
+              Личный кабинет
+            </p>
+          </NavLink>
         </div>
       </nav>
     </header>

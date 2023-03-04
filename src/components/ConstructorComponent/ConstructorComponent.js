@@ -7,7 +7,9 @@ import { useDrop } from "react-dnd";
 import { useDrag } from "react-dnd";
 import { useRef } from "react";
 
+
 export const ConstructorComponent = (props) => {
+
   const index = props.index;
   const data = props.data;
   const dispatch = useDispatch();

@@ -1,10 +1,13 @@
 import { config } from './App.js';
 import { checkResponse } from "../../utils/utils.js";
+import { getNewToken } from "../../services/actions/GetNewToken";
+
+
 export const POST_DATA = "POST_DATA";
 export const GET_FAILED = "GET_FAILED";
 export const GET_POST_SUCCESS = "GET_POST_SUCCESS";
 
-export function sendData(idConstructorForPost) {
+export function sendData(idConstructorForPost, tokenAccess) {
 
   const idData = { ingredients: idConstructorForPost };
 
@@ -16,7 +19,10 @@ export function sendData(idConstructorForPost) {
 
     fetch(`${config.baseUrl}/orders/`, {
       method: "POST",
-      headers: config.headers,
+      headers: {
+        "authorization": tokenAccess,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(idData),
     })
       .then(checkResponse)
@@ -27,6 +33,10 @@ export function sendData(idConstructorForPost) {
         })
       )
       .catch((err) => {
+        if (err.status === 401 || err.status === 403) {
+          const refreshTokenUser = localStorage.getItem('refreshToken');
+          getNewToken(refreshTokenUser);
+        }
         dispatch({
           type: GET_FAILED,
         });

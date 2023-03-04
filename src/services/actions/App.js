@@ -1,8 +1,9 @@
 import { checkResponse } from "../../utils/utils.js"
+
+
 export const GET_FEED = "GET_FEED";
 export const GET_FAILED = "GET_FAILED";
 export const GET_FEED_SUCCESS = "GET_FEED_SUCCESS";
-
 export const config = {
   baseUrl: "https://norma.nomoreparties.space/api",
   headers: {
@@ -12,6 +13,7 @@ export const config = {
 };
 
 export function getFeed() {
+
   return function (dispatch) {
     dispatch({
       type: GET_FEED,

@@ -8,14 +8,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 import { ADD_CONSTRUCTOR_COMPONENT } from "../../services/actions/Constructor.js";
 import { Summa } from "../Summa/Summa.js";
+import { useNavigate } from "react-router-dom";
+
 
 export const BurgerConstructor = () => {
 
+  const { nameUser } = useSelector((state) => ({
+    nameUser: state.postLogin.nameUser,
+  }));
+
   const [isOrderModalOpen, setIsOrderModalOpen] = React.useState(false);
 
+  const navigate = useNavigate();
+
   const openModal = () => {
+    if (!nameUser) {
+      setIsOrderModalOpen(false);
+      navigate("/login");
+    }
     setIsOrderModalOpen(true);
   };
+
   const closeModal = () => {
     setIsOrderModalOpen(false);
   };
@@ -23,6 +36,7 @@ export const BurgerConstructor = () => {
   const { dataconstructor } = useSelector((state) => ({
     dataconstructor: state.dataConstructor,
   }));
+
   const dispatch = useDispatch();
   const board = "box";
 
