@@ -4,14 +4,18 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
 import styles from "./styles.module.css";
+import { Navigate } from "react-router-dom";
 
-const Modal = ({ children, closeModal }) => {
+export const Modal = ({ children, closeModal }) => {
 
   React.useEffect(() => {
     const close = (evt) => {
       if (evt.key === "Escape") {
         {
           closeModal();
+          return (
+            <Navigate to="/" replace />
+          );
         }
       }
     };

@@ -21,3 +21,8 @@
   .icon_position {
     position: relative;
   }
+
+  .link {
+    text-decoration: none;
+    color: white;
+  }

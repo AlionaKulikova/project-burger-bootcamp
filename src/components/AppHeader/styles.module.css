@@ -25,15 +25,3 @@
 .logo {
   margin: 24px 288px 24px 112px;
 }
-
-.button_style {
-  display: flex;
-  flex-direction: row nowrap;
-  align-items: center;
-  gap: 8px;
-  background: #1c1c21;
-  width: 179px;
-  height: 56px;
-  border: none;
-  color: #f2f2f3;
-}

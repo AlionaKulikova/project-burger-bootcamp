@@ -12,14 +12,20 @@ const OrderDetails = () => {
   const idConstructorForPost = dataConstructor.map((item) => item.arr._id);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(sendData(idConstructorForPost));
-  }, []);
-
   const { dataPost, postRequest } = useSelector((state) => ({
     dataPost: state.postReducer.dataPost,
     postRequest: state.postReducer.postRequest,
   }));
+  
+  const { tokenAccess } = useSelector((state) => ({
+    tokenAccess: state.postLogin.tokenAccess,
+  }));
+
+  useEffect(() => {
+    dispatch(sendData(idConstructorForPost,tokenAccess));
+  }, []);
+
+
 
   if (postRequest) {
     return <div className={styles.load}>Загрузка...</div>
