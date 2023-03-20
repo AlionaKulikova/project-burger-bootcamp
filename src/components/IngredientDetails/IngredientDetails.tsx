@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
+import { useSelector } from '../../utils/hooks';
 import styles from "./styles.module.css";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -9,7 +9,7 @@ import { TIngredient } from "../../utils/types"
 export const IngredientDetails: FC = () => {
   let location = useLocation();
   let state = location.state;
-  const { feed } = useSelector((state: any) => ({
+  const { feed } = useSelector((state) => ({
     feed: state.dataReducer,
   }));
   const { id } = useParams();

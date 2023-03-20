@@ -1,34 +1,28 @@
 import { checkResponse } from "../../utils/utils";
 import { AppDispatch, AppThunk } from "../../utils/types";
 
-export const POST_DATA_TOKEN = "POST_DATA_TOKEN";
-export const GET_NEW_TOKEN = "GET_NEW_TOKEN";
-export const GET_FAILED_TOKEN = "GET_FAILED_TOKEN";
+export const POST_DATA_TOKEN: "POST_DATA_TOKEN" = "POST_DATA_TOKEN";
+export const GET_NEW_TOKEN: "GET_NEW_TOKEN" = "GET_NEW_TOKEN";
+export const GET_FAILED_TOKEN: "GET_FAILED_TOKEN" = "GET_FAILED_TOKEN";
 
 
-export const getNewToken = (refreshTokenUser: string | null): AppThunk => {
-
+export const getNewToken = (refreshToken: string | null): AppThunk => {
   const idData = {
-    token: refreshTokenUser,
+    token: refreshToken,
   }
-  const configProfile = {
-    baseUrl: "https://norma.nomoreparties.space/api",
-    headers: {
-      "authorization": "e91d2d7a-7934-4811-b5d2-d42326a1cfb9",
-      "Content-Type": "application/json",
-    },
-  };
 
   return function (dispatch: AppDispatch) {
-
     dispatch({
       type: POST_DATA_TOKEN,
       text: "по умолчанию post",
     });
 
-    fetch(`${configProfile.baseUrl}/auth/user`, {
-      method: "GET",
-      headers: configProfile.headers,
+    fetch('https://norma.nomoreparties.space/api/auth/token', {
+      method: "POST",
+      headers: {
+        "authorization": refreshToken || '',
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(idData),
     })
       .then(checkResponse)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import styles from './profile.module.css';
 import { Input, Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from '../../utils/hooks';
 import { patchDataUser } from "../../services/actions/EditProfile";
 import { NavLink } from 'react-router-dom';
 import { loginEsc } from "../../services/actions/LoginEsc";
@@ -11,7 +11,7 @@ import { removeCookie } from 'typescript-cookie'
 
 export const ProfilePage: FC = () => {
 
-  const { dataPost, nameUser, emailUser, tokenAccess, userPassword, prevname, prevemail, prevpassword } = useSelector((state: any) => ({
+  const { dataPost, nameUser, emailUser, tokenAccess, userPassword, prevname, prevemail, prevpassword } = useSelector((state) => ({
     dataPost: state.postLogin.dataPost,
     nameUser: state.postLogin.nameUser,
     emailUser: state.postLogin.emailUser,

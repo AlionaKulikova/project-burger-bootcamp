@@ -2,9 +2,9 @@ import { config } from './App';
 import { checkResponse } from "../../utils/utils";
 import { AppDispatch, AppThunk } from "../../utils/types";
 
-export const POST_DATA_REGISTER = "POST_DATA_REGISTER";
-export const GET_FAILED_REGISTER = "GET_FAILED_REGISTER";
-export const GET_POST_SUCCESS_REGISTER = "GET_POST_SUCCESS_REGISTER";
+export const POST_DATA_REGISTER:"POST_DATA_REGISTER" = "POST_DATA_REGISTER";
+export const GET_FAILED_REGISTER:"GET_FAILED_REGISTER" = "GET_FAILED_REGISTER";
+export const GET_POST_SUCCESS_REGISTER:"GET_POST_SUCCESS_REGISTER" = "GET_POST_SUCCESS_REGISTER";
 
 
 export const postDataRegister = (dataName: string, dataEmail: string, dataPassword: string): AppThunk => {

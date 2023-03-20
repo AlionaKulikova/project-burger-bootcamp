@@ -2,7 +2,7 @@ import { useState, useEffect, FormEvent, ChangeEvent, FC } from 'react';
 import styles from './login.module.css';
 import { EmailInput, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from '../../utils/hooks';
 import { postDataLogin } from "../../services/actions/Login";
 import { USER_PASSWORD } from "../../services/actions/Login";
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ export const LoginPage: FC = () => {
     }
   }, []);
 
-  const { nameUser, escRequest } = useSelector((state: any) => ({
+  const { nameUser, escRequest } = useSelector((state) => ({
     nameUser: state.postLogin.nameUser,
     escRequest: state.postLogin.escRequest,
   }));

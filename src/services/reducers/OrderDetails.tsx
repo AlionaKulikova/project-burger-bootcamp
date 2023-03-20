@@ -1,10 +1,11 @@
 import { POST_DATA, GET_FAILED_ORDER, GET_POST_SUCCESS } from '../actions/OrderDetails';
 import { AppActions } from "../../utils/types";
+import { IOrder } from '../../utils/types';
 
 interface IPost {
   postRequest: boolean,
   postFailed: boolean,
-  dataPost: {},
+  dataPost: IOrder;
 }
 
 const initialState: IPost = {
@@ -14,6 +15,7 @@ const initialState: IPost = {
 }
 
 export const postReducer = (state = initialState, action: AppActions): IPost => {
+
   switch (action.type) {
     case POST_DATA: {
       return {

@@ -14,7 +14,7 @@ type Props = {
 export const Modal: FC<Props> = ({ children, closeModal }) => {
 
   React.useEffect(() => {
-    const close = (evt: { key: string; }) => {
+    const close = (evt: KeyboardEvent) => {
       if (evt.key === "Escape") {
         {
           closeModal();

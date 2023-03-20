@@ -1,16 +1,17 @@
 import { checkResponse } from "../../utils/utils";
 import { getNewToken } from "../../services/actions/GetNewToken";
 import { AppDispatch, AppThunk } from "../../utils/types";
+import { baseUrl} from '../../utils/utils'
 
-export const GET_DATA_USER = "GET_DATA_USER ";
-export const GET_FAILED_USER = "GET_FAILED_USER ";
-export const GET_SUCCESS_USER = "GET_SUCCESS_USER ";
+export const GET_DATA_USER:'GET_DATA_USER' = 'GET_DATA_USER';
+export const GET_FAILED_USER:"GET_FAILED_USER" = "GET_FAILED_USER";
+export const GET_SUCCESS_USER:"GET_SUCCESS_USER" = "GET_SUCCESS_USER";
 
 
 export const getDataUser = (tokenAccess: string): AppThunk => {
 
   const configProfile = {
-    baseUrl: "https://norma.nomoreparties.space/api",
+    baseUrl: `${baseUrl}/api`,
     headers: {
       "authorization": tokenAccess,
       "Content-Type": "application/json",
@@ -18,7 +19,6 @@ export const getDataUser = (tokenAccess: string): AppThunk => {
   };
 
   return function (dispatch: AppDispatch) {
-    console.log('зашли в ф-ю диспатч get');
     dispatch({
       type: GET_DATA_USER,
       text: "по умолчанию post",
@@ -37,8 +37,8 @@ export const getDataUser = (tokenAccess: string): AppThunk => {
       })
       .catch((err) => {
         if (err.status === 401 || err.status === 403) {
-          const refreshTokenUser = localStorage.getItem('refreshToken');
-          getNewToken(refreshTokenUser);
+          const refreshToken = localStorage.getItem('refreshToken');
+          getNewToken(refreshToken);
         }
         dispatch({
           type: GET_FAILED_USER,

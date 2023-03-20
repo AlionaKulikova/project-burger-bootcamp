@@ -3,7 +3,7 @@ import styles from './forgot-password.module.css';
 import { EmailInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from '../../utils/hooks';
 import { postDataEmail } from "../../services/actions/ForgotPassword";
 import { Navigate } from "react-router-dom";
 import type { } from 'redux-thunk/extend-redux';
@@ -11,7 +11,7 @@ import type { } from 'redux-thunk/extend-redux';
 
 export const ForgotPasswordPage: FC = () => {
 
-  const { nameUser, escRequest } = useSelector((state: any) => ({
+  const { nameUser, escRequest } = useSelector((state) => ({
     nameUser: state.postLogin.nameUser,
     escRequest: state.postLogin.escRequest,
   }));

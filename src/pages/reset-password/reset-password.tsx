@@ -2,7 +2,7 @@ import { useState, FC, FormEvent } from 'react';
 import styles from './reset-password.module.css';
 import { Input, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from '../../utils/hooks';
 import { postDataPassword } from "../../services/actions/ResetPassword";
 import { Navigate } from "react-router-dom";
 import type { } from 'redux-thunk/extend-redux';
@@ -10,12 +10,12 @@ import type { } from 'redux-thunk/extend-redux';
 
 export const ResetPasswordPage: FC = () => {
 
-  const { nameUser, escRequest } = useSelector((state: any) => ({
+  const { nameUser, escRequest } = useSelector((state) => ({
     nameUser: state.postLogin.nameUser,
     escRequest: state.postLogin.escRequest,
   }));
 
-  const { buttonClick } = useSelector((state: any) => ({
+  const { buttonClick } = useSelector((state) => ({
     buttonClick: state.postForgotPasswordReducer.buttonClick,
   }));
 
