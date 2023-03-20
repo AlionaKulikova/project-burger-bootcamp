@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./styles.module.css";
-import { useSelector } from "react-redux";
+import { useSelector } from '../../utils/hooks';
 import { DraggableCard } from "../DraggableCard/DraggableCard";
 import { TIngredient } from "../../utils/types";
 
 const BurgerIngredients: FC = () => {
 
-  const { feed } = useSelector((state: any) => ({
+  const { feed } = useSelector((state) => ({
     feed: state.dataReducer.feed,
   }));
 

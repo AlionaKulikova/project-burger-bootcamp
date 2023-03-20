@@ -3,12 +3,12 @@ import { checkResponse } from "../../utils/utils";
 import { getNewToken } from "../../services/actions/GetNewToken";
 import { AppDispatch, AppThunk } from '../../utils/types';
 
-export const POST_DATA = "POST_DATA";
-export const GET_FAILED_ORDER = "GET_FAILED_ORDER";
-export const GET_POST_SUCCESS = "GET_POST_SUCCESS";
+export const POST_DATA:"POST_DATA" = "POST_DATA";
+export const GET_FAILED_ORDER:"GET_FAILED_ORDER" = "GET_FAILED_ORDER";
+export const GET_POST_SUCCESS:"GET_POST_SUCCESS" = "GET_POST_SUCCESS";
 
 
-export const sendData = (idConstructorForPost: string, tokenAccess: string): AppThunk => {
+export const sendData = (idConstructorForPost: string[], tokenAccess: string): AppThunk => {
 
   const idData = { ingredients: idConstructorForPost };
 
@@ -35,8 +35,8 @@ export const sendData = (idConstructorForPost: string, tokenAccess: string): App
       )
       .catch((err) => {
         if (err.status === 401 || err.status === 403) {
-          const refreshTokenUser = localStorage.getItem('refreshToken');
-          getNewToken(refreshTokenUser);
+          const refreshToken = localStorage.getItem('refreshToken');
+          getNewToken(refreshToken);
         }
         dispatch({
           type: GET_FAILED_ORDER,

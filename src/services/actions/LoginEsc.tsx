@@ -3,9 +3,9 @@ import { checkResponse } from "../../utils/utils";
 import { AppDispatch, AppThunk } from '../../utils/types';
 
 
-export const ESC_DATA_LOGIN = "ESC_DATA_LOGIN";
-export const ESC_FAILED_LOGIN = "ESC_FAILED_LOGIN";
-export const ESC_SUCCESS_LOGIN = "ESC_SUCCESS_LOGIN";
+export const ESC_DATA_LOGIN:"ESC_DATA_LOGIN" = "ESC_DATA_LOGIN";
+export const ESC_FAILED_LOGIN:"ESC_FAILED_LOGIN" = "ESC_FAILED_LOGIN";
+export const ESC_SUCCESS_LOGIN:"ESC_SUCCESS_LOGIN" = "ESC_SUCCESS_LOGIN";
 
 
 export const loginEsc = (refreshToken: string): AppThunk => {
@@ -27,7 +27,6 @@ export const loginEsc = (refreshToken: string): AppThunk => {
     })
       .then(checkResponse)
       .then((data) => {
-        console.log(data);
         dispatch({
           type: ESC_SUCCESS_LOGIN,
           dataPost: data,

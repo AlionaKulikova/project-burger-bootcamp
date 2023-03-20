@@ -2,14 +2,14 @@ import React, { useState, FC } from 'react';
 import styles from './register.module.css';
 import { Input, EmailInput, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from '../../utils/hooks';
 import { postDataRegister } from "../../services/actions/Register";
 import { Navigate } from "react-router-dom";
 import type { } from 'redux-thunk/extend-redux';
 
 export const RegisterPage: FC = () => {
 
-  const { nameUser, escRequest } = useSelector((state: any) => ({
+  const { nameUser, escRequest } = useSelector((state) => ({
     nameUser: state.postLogin.nameUser,
     escRequest: state.postLogin.escRequest,
   }));

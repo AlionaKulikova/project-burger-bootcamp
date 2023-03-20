@@ -1,20 +1,24 @@
 import { ADD_CONSTRUCTOR_COMPONENT } from "../actions/Constructor";
 import { DELETE_CONSTRUCTOR_COMPONENT } from "../actions/Constructor";
 import { CONSTRUCTER_ORDER } from "../actions/Constructor";
-import { AnyAction } from "redux";
+import { AppActions } from "../../utils/types";
+import { TConstructorIngredient } from "../../utils/types";
 
-const initialState: [] = [];
 
-export const dataConstructor = (state = initialState, action: AnyAction) => {
+const initialState: Array<TConstructorIngredient> = [];
+
+export const dataConstructor = (state = initialState, action: AppActions): Array<TConstructorIngredient> => {
   switch (action.type) {
+
     case ADD_CONSTRUCTOR_COMPONENT: {
-      if (action.itemId.data.type === "bun") {
+      const itemIngredient = action.itemId.data;
+      if (itemIngredient.type === "bun") {
         const filtrArray = state.filter((item: any) => item.id.data.type !== "bun");
         return [
           ...filtrArray,
           {
             id: action.itemId,
-            arr: action.itemId.data,
+            arr: itemIngredient,
             board: action.board,
             randomId: action.randomId,
           },
@@ -24,7 +28,7 @@ export const dataConstructor = (state = initialState, action: AnyAction) => {
           ...state,
           {
             id: action.itemId,
-            arr: action.itemId.data,
+            arr: itemIngredient,
             board: action.board,
             randomId: action.randomId,
           },

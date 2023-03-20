@@ -3,10 +3,10 @@ import { checkResponse } from "../../utils/utils";
 import { AppDispatch, AppThunk } from "../../utils/types";
 
 
-export const POST_DATA_LOGIN = "POST_DATA_LOGIN ";
-export const GET_FAILED_LOGIN = "GET_FAILED_LOGIN ";
-export const GET_POST_SUCCESS_LOGIN = "GET_POST_SUCCESS_LOGIN ";
-export const USER_PASSWORD = "USER_PASSWORD";
+export const POST_DATA_LOGIN:"POST_DATA_LOGIN" = "POST_DATA_LOGIN";
+export const GET_FAILED_LOGIN:"GET_FAILED_LOGIN" = "GET_FAILED_LOGIN";
+export const GET_POST_SUCCESS_LOGIN:"GET_POST_SUCCESS_LOGIN" = "GET_POST_SUCCESS_LOGIN";
+export const USER_PASSWORD:"USER_PASSWORD" = "USER_PASSWORD";
 
 
 export const postDataLogin = (dataEmail: string, dataPassword: String): AppThunk => {

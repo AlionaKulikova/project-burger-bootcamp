@@ -4,17 +4,17 @@ import styles from "./styles.module.css";
 import Modal from "../Modal/Modal";
 import React, { useMemo, FC } from "react";
 import OrderDetails from "../OrderDetails/OrderDetails";
-import { useDispatch, useSelector } from "react-redux";
+//import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 import { ADD_CONSTRUCTOR_COMPONENT } from "../../services/actions/Constructor";
 import { Summa } from "../Summa/Summa";
 import { useNavigate } from "react-router-dom";
 import { TConstructorIngredient } from "../../utils/types";
-
+import { useSelector, useDispatch } from '../../utils/hooks'
 
 export const BurgerConstructor: FC = () => {
 
-  const { nameUser } = useSelector((state: any) => ({
+  const { nameUser } = useSelector((state) => ({
     nameUser: state.postLogin.nameUser,
   }));
 
@@ -34,7 +34,7 @@ export const BurgerConstructor: FC = () => {
     setIsOrderModalOpen(false);
   };
 
-  const { dataconstructor } = useSelector((state: any) => ({
+  const { dataconstructor } = useSelector((state) => ({
     dataconstructor: state.dataConstructor,
   }));
 

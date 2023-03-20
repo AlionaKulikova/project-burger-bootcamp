@@ -1,0 +1,162 @@
+.main_box {
+    display: flex;
+    gap: 60px;
+    margin-top: 120px;
+}
+
+.menu {
+    margin: 100px;
+    width: 320px;
+    height: 330px;
+    position: relative;
+}
+
+.content {
+    width: 480px;
+    height: 678px;
+    margin: 0;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height: 678px;
+}
+
+.name {
+    margin: 0;
+    width: 480px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    color: #F2F2F3;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 80px;
+    gap: 4px;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+}
+
+.registration {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+    width: 480px;
+    height: 24px;
+    margin-bottom: 16px;
+}
+
+.recovery {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 480px;
+    height: 24px;
+}
+
+a {
+    color: #4C4CFF;
+    margin-left: 8px;
+}
+
+.tab {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height: 64px;
+}
+
+.tab_active {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height: 64px;
+    color: white;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height: 48px;
+    margin-top: 80px;
+}
+
+.box_one {
+    height: 912px;
+    width: 600px;
+}
+
+.box_one {
+    gap: 16px;
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 716px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y;
+    padding-top: 100px;
+}
+
+.box_one::-webkit-scrollbar {
+    height: 464px;
+    width: 8px;
+}
+
+.box_one::-webkit-scrollbar-track {
+    background: #2f2f37;
+}
+
+.box_one::-webkit-scrollbar-thumb {
+    height: 292px;
+    width: 8px;
+    background: #8585ad;
+}
+
+.component {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header_name {
+    width: 1240px;
+    height: 40px;
+}
+
+.box_history {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    gap: 60px;
+}
