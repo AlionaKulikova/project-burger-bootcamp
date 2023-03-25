@@ -14,7 +14,7 @@ type Props = {
 export const Modal: FC<Props> = ({ children, closeModal }) => {
 
   React.useEffect(() => {
-    const close = (evt: { key: string; }) => {
+    const close = (evt: KeyboardEvent) => {
       if (evt.key === "Escape") {
         {
           closeModal();
@@ -28,8 +28,8 @@ export const Modal: FC<Props> = ({ children, closeModal }) => {
   return ReactDOM.createPortal(
     <div className={styles.modal_wrapper}>
       <ModalOverlay close={closeModal} />
-      <div className={styles.modal_box}>
-        <div className={`${styles.close_order_modal} mt-15 mr-10`}>
+      <div className={styles.modal_box} id="modal_box">
+        <div className={`${styles.close_order_modal} mt-15 mr-10`} id="modal_close">
           <CloseIcon type="primary" onClick={closeModal} />
         </div>
         {children}

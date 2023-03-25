@@ -2,9 +2,9 @@ import { config } from './App';
 import { checkResponse } from "../../utils/utils";
 import { AppDispatch, AppThunk } from "../../utils/types";
 
-export const POST_DATA_RESET_PASSWORD = "POST_DATA_RESET_PASSWORD";
-export const GET_FAILED_RESET_PASSWORD = "GET_FAILED_RESET_PASSWORD";
-export const GET_POST_SUCCESS_RESET_PASSWORD = "GET_POST_SUCCESS_RESET_PASSWORD";
+export const POST_DATA_RESET_PASSWORD:"POST_DATA_RESET_PASSWORD" = "POST_DATA_RESET_PASSWORD";
+export const GET_FAILED_RESET_PASSWORD:"GET_FAILED_RESET_PASSWORD" = "GET_FAILED_RESET_PASSWORD";
+export const GET_POST_SUCCESS_RESET_PASSWORD:"GET_POST_SUCCESS_RESET_PASSWORD" = "GET_POST_SUCCESS_RESET_PASSWORD";
 
 
 export const postDataPassword = (dataPassword: string, number: string): AppThunk => {

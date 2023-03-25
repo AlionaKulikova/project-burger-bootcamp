@@ -8,6 +8,7 @@ import { postResetPasswordReducer } from "./ResetPassword";
 import { postRegister } from "./Register";
 import { postLogin } from "./Login";
 import { getUser } from "./ProfileUser";
+import { wsReducer } from "../reducers/WsReduser";
 
 
 export const rootReducer = combineReducers({
@@ -20,4 +21,5 @@ export const rootReducer = combineReducers({
   postRegister: postRegister,
   postLogin: postLogin,
   getUser: getUser,
+  wsReducer: wsReducer,
 });

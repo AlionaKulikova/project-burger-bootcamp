@@ -1,0 +1,134 @@
+.box {
+  margin-top: 122px;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+  width: 640px;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.box_modal {
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+  width: 640px;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container_component {
+  margin-top: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 616px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y;
+  gap: 16px;
+  padding-right: 20px;
+}
+
+.container_component::-webkit-scrollbar {
+  height: 464px;
+  width: 8px;
+}
+
+.container_component::-webkit-scrollbar-track {
+  background: #2f2f37;
+}
+
+.container_component::-webkit-scrollbar-thumb {
+  height: 194px;
+  width: 8px;
+  background: #8585ad;
+}
+
+.component {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 16px;
+  margin-top: 55px;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+li {
+  padding: 0;
+  list-style: none;
+}
+
+.images {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 640px;
+  height: 64px;
+  gap: 16px;
+}
+
+.name_burger {
+  max-width: 640px;
+  min-height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.data_price {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 9px;
+}
+
+.name {
+  display: flex;
+  align-self: center;
+  width: 320px;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.load {
+  font-size: 50px;
+  color: gray;
+  position: absolute;
+  top: 200px;
+  left: 250px;
+  right: auto;
+}
+
+.loader {
+  display: flex;
+  font-size: 30px;
+  color: gray;
+  justify-content: center;
+  align-items: center;
+  left: auto;
+  right: auto;
+}

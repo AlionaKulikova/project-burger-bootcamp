@@ -1,11 +1,11 @@
 import { GET_FEED, GET_FAILED, GET_FEED_SUCCESS } from "../actions/App";
 import { AppActions } from "../../utils/types";
-
+import { TIngredient } from "../../utils/types";
 
 export interface IData {
   feedRequest: boolean,
   feedFailed: boolean,
-  feed: null | [] | {},
+  feed: TIngredient[],
 };
 
 const initialState: IData = {

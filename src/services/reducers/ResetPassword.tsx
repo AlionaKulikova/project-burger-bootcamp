@@ -6,7 +6,7 @@ interface IPostResetPassword {
   postFailed: boolean,
   dataPost: {},
 }
-const initialState = {
+const initialState:IPostResetPassword = {
   postRequest: false,
   postFailed: false,
   dataPost: {},

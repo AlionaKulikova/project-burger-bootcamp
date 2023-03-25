@@ -4,3 +4,5 @@ export const checkResponse = (res: Response) => {
   }
   return Promise.reject(`Ошибка ${res.status}`);
 };
+
+export const baseUrl= "https://norma.nomoreparties.space";

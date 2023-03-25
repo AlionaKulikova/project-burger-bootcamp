@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./styles.module.css";
-import { useSelector } from "react-redux";
+import { useSelector } from '../../utils/hooks';
 import { DraggableCard } from "../DraggableCard/DraggableCard";
 import { TIngredient } from "../../utils/types";
 
-const BurgerIngredients: FC = () => {
+export const BurgerIngredients: FC = () => {
 
-  const { feed } = useSelector((state: any) => ({
+  const { feed } = useSelector((state) => ({
     feed: state.dataReducer.feed,
   }));
 
@@ -63,7 +63,7 @@ const BurgerIngredients: FC = () => {
       <div className={styles.container} id="box" onScroll={scrolling}>
         <div id="buns">
           <h2>Булки</h2>
-          <div className={styles.buns_box}> {feed.map((card: TIngredient) => card.type === "bun" && <DraggableCard key={card._id} data={card} />)}</div>
+          <div id="buns-box" className={styles.buns_box}> {feed.map((card: TIngredient) => card.type === "bun" && <DraggableCard key={card._id} data={card} />)}</div>
         </div>
         <div id="sousy">
           <h2>Соусы</h2>

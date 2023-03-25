@@ -30,13 +30,13 @@ export const AppHeader: FC = () => {
         </div>
         <div className="mt-4 mb-4">
           <NavLink
-            to="/tape"
+            to="/feed"
             className={
               ({ isActive }) =>
                 isActive ? styles.activeStyle : `${styles.activeStyle} text text_type_main-default text_color_inactive text_type_main-small`
             }>
-            <ListIcon type={location.pathname === "/tape" ? "primary" : "secondary"} />
-            <p className={location.pathname === "/tape" ? "text text_type_main-default text_type_main-small" : "text text_type_main-default text_color_inactive text_type_main-small"}>
+            <ListIcon type={location.pathname === "/feed" ? "primary" : "secondary"} />
+            <p className={location.pathname === "/feed" ? "text text_type_main-default text_type_main-small" : "text text_type_main-default text_color_inactive text_type_main-small"}>
               Лента заказов
             </p>
           </NavLink>
