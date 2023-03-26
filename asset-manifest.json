@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project-burger-bootcamp/static/css/main.cba6440d.css",
-    "main.js": "/project-burger-bootcamp/static/js/main.19271ee9.js",
+    "main.css": "/project-burger-bootcamp/static/css/main.08930ad2.css",
+    "main.js": "/project-burger-bootcamp/static/js/main.c14c0303.js",
     "static/media/done.svg": "/project-burger-bootcamp/static/media/done.cff867107a36266e6232a6613bb4ecf4.svg",
     "static/media/JetBrainsMono-Bold.woff": "/project-burger-bootcamp/static/media/JetBrainsMono-Bold.3914674f1cb2335acf26.woff",
     "static/media/JetBrainsMono-Regular.woff": "/project-burger-bootcamp/static/media/JetBrainsMono-Regular.f52bee61d00ce995b89f.woff",
@@ -10,11 +10,11 @@
     "static/media/iceland.woff": "/project-burger-bootcamp/static/media/iceland.77ad7fc2baffd9305538.woff",
     "static/media/iceland.woff2": "/project-burger-bootcamp/static/media/iceland.4ae67a017a5ff82bbbb7.woff2",
     "index.html": "/project-burger-bootcamp/index.html",
-    "main.cba6440d.css.map": "/project-burger-bootcamp/static/css/main.cba6440d.css.map",
-    "main.19271ee9.js.map": "/project-burger-bootcamp/static/js/main.19271ee9.js.map"
+    "main.08930ad2.css.map": "/project-burger-bootcamp/static/css/main.08930ad2.css.map",
+    "main.c14c0303.js.map": "/project-burger-bootcamp/static/js/main.c14c0303.js.map"
   },
   "entrypoints": [
-    "static/css/main.cba6440d.css",
-    "static/js/main.19271ee9.js"
+    "static/css/main.08930ad2.css",
+    "static/js/main.c14c0303.js"
   ]
 }
