@@ -1,9 +1,10 @@
+import { baseUrl } from '../../src/utils/utils';
 describe('The Home Page', () => {
     beforeEach(() => {
-        cy.request('GET', 'https://norma.nomoreparties.space/api/ingredients')
+        cy.request('GET', `${baseUrl}/api/ingredients`)
             .then((response) => {
                 expect(response.body.data).to.have.length(15);
-                cy.visit('http://localhost:3000/');
+                cy.visit('/');
             })
     });
 
@@ -16,8 +17,8 @@ describe('The Home Page', () => {
             cy.get('input[name="email"]').type('kulikovaaliona@mail.ru')
             cy.get('input[name="password"]').type('ghRgf#57')
         }).submit();
-        cy.visit('http://localhost:3000/');
-        cy.visit('http://localhost:3000/Profile');
+        cy.visit('/');
+        cy.visit('/Profile');
         cy.contains('Конструктор').click();
         cy.get('div').contains('Флюоресцентная булка R2-D3').click();
         cy.get('#modal_box').find('#modal_close').click();
@@ -33,8 +34,9 @@ describe('The Home Page', () => {
         cy.get('#drop').trigger('drop');
         cy.get('div').contains("Мини-салат Экзо-Плантаго").trigger('dragstart');
         cy.get('#drop').trigger('drop');
-        cy.get('button').contains('Оформить заказ').click().wait(17000)
-        cy.get('#modal_box').contains('идентификатор заказа')
+        cy.get('button').contains('Оформить заказ').click();
+        cy.get('button').contains('Оформить заказ').click();
+        cy.get('#modal_box').wait(17000).contains('идентификатор заказа');
         cy.get('#modal_close').click();
     });
 });

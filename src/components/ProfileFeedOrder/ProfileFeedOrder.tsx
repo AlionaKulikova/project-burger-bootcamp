@@ -8,18 +8,10 @@ import { useEffect } from "react";
 import { ADD_DATA_ORDER } from "../../utils/types";
 import type { } from 'redux-thunk/extend-redux';
 import { WS_USER_CONNECTION_START } from '../../utils/types';
+import { WS_USER_CONNECTION_CLOSED } from '../../utils/types';
 import { useNavigate } from "react-router-dom";
 import { USER_DETAL_URL } from '../../utils/types';
 
-type TOrder = {
-  createdAt: string,
-  ingredients: string[],
-  name: string,
-  number: number,
-  status: string,
-  updatedAt: string,
-  _id: string,
-}
 
 export const ProfileFeedOrder: FC = () => {
 
@@ -42,7 +34,7 @@ export const ProfileFeedOrder: FC = () => {
       dispatch({
         type: WS_USER_CONNECTION_START,
       });
-      const targetOrderId = user.orders?.find((item: TOrder) => item._id === useParam);
+      const targetOrderId = user.orders?.find((item) => item._id === useParam);
       dispatch({
         type: ADD_DATA_ORDER,
         targetOrderId: targetOrderId,
@@ -59,13 +51,18 @@ export const ProfileFeedOrder: FC = () => {
           type: WS_USER_CONNECTION_START,
         });
 
-        const targetOrderId = user.orders?.find((item: TOrder) => item._id === useParam);
+        const targetOrderId = user.orders?.find((item) => item._id === useParam);
         dispatch({
           type: ADD_DATA_ORDER,
           targetOrderId: targetOrderId,
         })
         navigate(`/profile/orders/feed/${useParam}`);
       }
+    }
+    return () => {
+      dispatch({
+        type: WS_USER_CONNECTION_CLOSED,
+      });
     }
   }, []);
 
@@ -77,7 +74,7 @@ export const ProfileFeedOrder: FC = () => {
   const arrayOrders = user.orders;
   const { id } = useParams();
   const orderId = arrayOrders?.find((item) => item._id === id);
-  const arrayId: string[] | undefined = orderId?.ingredients;
+  const arrayId = orderId?.ingredients;
 
   function editDate(item: string) {
     return new Date(item).toLocaleString()
@@ -86,7 +83,7 @@ export const ProfileFeedOrder: FC = () => {
   const { allIngredients } = useSelector((state) => ({
     allIngredients: state.dataReducer.feed,
   }));
-  const findIngredient = arrayId?.map((orderIngredient: string) => allIngredients.find((ingredient) => ingredient._id === orderIngredient));
+  const findIngredient = arrayId?.map((orderIngredient) => allIngredients.find((ingredient) => ingredient._id === orderIngredient));
   const sumOrders = () => {
     let summa = 0;
     arrayId?.forEach((itemIdIngredient) => {

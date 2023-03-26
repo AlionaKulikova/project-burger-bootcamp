@@ -4,14 +4,13 @@ import styles from "./styles.module.css";
 import { useSelector, useDispatch } from '../../utils/hooks';
 import { sendData } from "../../services/actions/OrderDetails";
 import type { } from 'redux-thunk/extend-redux';
-import { TConstructorIngredient } from "../../utils/types";
 
 const OrderDetails: FC = () => {
 
   const { dataConstructor } = useSelector((state) => ({
     dataConstructor: state.dataConstructor,
   }));
-  const idConstructorForPost = dataConstructor.map((item: TConstructorIngredient) => item.arr._id);
+  const idConstructorForPost = dataConstructor.map((item) => item.arr._id);
   const dispatch = useDispatch();
 
   const { dataPost, postRequest } = useSelector((state) => ({

@@ -8,7 +8,6 @@ import { useDispatch } from "../../utils/hooks";
 import { ADD_ORDER_DETAL } from '../../services/actions/ComponentOrderDetails';
 import { TIngredient } from '../../utils/types';
 
-
 type Props = {
   order: {
     createdAt: string,
@@ -31,7 +30,7 @@ export const ComponentOrderDetails: FC<Props> = ({ order }) => {
     allIngredients: state.dataReducer.feed,
   }));
   const toFindIngredient = (targetIngredient: string, allIngredients: TIngredient[]) => {
-    return allIngredients.find((findIngredient: TIngredient) => findIngredient._id === targetIngredient)
+    return allIngredients.find((findIngredient) => findIngredient._id === targetIngredient)
   }
   const dispatch = useDispatch();
   const openModal = () => {
@@ -48,8 +47,8 @@ export const ComponentOrderDetails: FC<Props> = ({ order }) => {
 
   const countBurger = () => {
     let sum = 0;
-    ingredients.forEach((orderIngredient: string) => {
-      const element = allIngredients.find((targetIngredient: TIngredient) => targetIngredient._id === orderIngredient)
+    ingredients.forEach((orderIngredient) => {
+      const element = allIngredients.find((targetIngredient) => targetIngredient._id === orderIngredient)
       if (element?.price) {
         sum += element.price
       }

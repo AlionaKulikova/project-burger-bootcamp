@@ -26,9 +26,11 @@ export const HistoryOrder: FC = () => {
     dispatch({
       type: WS_USER_CONNECTION_START,
     });
-    dispatch({
-      type: WS_USER_CONNECTION_CLOSED,
-    });
+    return () => {
+      dispatch({
+        type: WS_USER_CONNECTION_CLOSED,
+      });
+    }
   }, []);
 
   const { user } = useSelector((state) => ({

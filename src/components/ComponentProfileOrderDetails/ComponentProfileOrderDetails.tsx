@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./styles.module.css";
 import { useSelector } from '../../utils/hooks';
 import { Link } from 'react-router-dom';
@@ -29,7 +29,7 @@ export const ComponentProfileOrderDetails: FC<Props> = ({ order }) => {
     allIngredients: state.dataReducer.feed,
   }));
   const toFindIngredient = (targetIngredient: string, allIngredients: TIngredient[]) => {
-    return allIngredients.find((findIngredient: TIngredient) => findIngredient._id === targetIngredient)
+    return allIngredients.find((findIngredient) => findIngredient._id === targetIngredient)
   }
   const dispatch = useDispatch();
 
@@ -47,8 +47,8 @@ export const ComponentProfileOrderDetails: FC<Props> = ({ order }) => {
 
   const countBurger = () => {
     let sum = 0;
-    ingredients.forEach((orderIngredient: string) => {
-      const element = allIngredients.find((targetIngredient: TIngredient) => targetIngredient._id === orderIngredient)
+    ingredients.forEach((orderIngredient) => {
+      const element = allIngredients.find((targetIngredient) => targetIngredient._id === orderIngredient)
       if (element?.price) {
         sum += element.price
       }

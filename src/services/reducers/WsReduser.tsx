@@ -1,4 +1,4 @@
-import type { IMessage, AppActions } from '../../utils/types'
+import type { IMessage, AppActions } from '../../utils/types';
 import {
   WS_CONNECTION_START,
   WS_CONNECTION_SUCCESS,
@@ -26,7 +26,7 @@ type TWSState = {
   user: IMessage;
 }
 
-const initialState: TWSState = {
+export const initialState: TWSState = {
   wsConnected: false,
   orders: {
     orders: [],

@@ -6,7 +6,7 @@ interface IGetUser {
   getFailed: boolean,
   dataGet: {},
 }
-const initialState: IGetUser = {
+export const initialState: IGetUser = {
   getRequest: false,
   getFailed: false,
   dataGet: {},

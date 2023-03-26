@@ -8,7 +8,7 @@ export interface IPostForgotPassword {
   buttonClick: boolean,
 }
 
-const initialState: IPostForgotPassword = {
+export const initialState: IPostForgotPassword = {
   postRequest: false,
   postFailed: false,
   dataPost: {},

@@ -42,13 +42,13 @@ export const App: FC = () => {
         type: DELETE_INGREDIENT_DETAL,
       },
     )
-    if (state && !openOrderDetalModal && !openProfileOrderDetalModal) {
-      navigate("/");
+    if (!openOrderDetalModal && !openProfileOrderDetalModal) {
+      navigate(-1);
     }
-    if (state && openOrderDetalModal && !openProfileOrderDetalModal) {
+    if (openOrderDetalModal && !openProfileOrderDetalModal) {
       navigate("/feed");
     }
-    if (state && openProfileOrderDetalModal && !openOrderDetalModal) {
+    if (openProfileOrderDetalModal && !openOrderDetalModal) {
       navigate("/profile/orders");
     }
   }

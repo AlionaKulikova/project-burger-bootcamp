@@ -1,18 +1,8 @@
 import { postReducer } from '../reducers/OrderDetails';
 import { POST_DATA, GET_FAILED_ORDER, GET_POST_SUCCESS } from '../actions/OrderDetails';
-import { IOrder } from '../../utils/types';
+import { initialState } from './OrderDetails';
 
 
-interface IPost {
-    postRequest: boolean,
-    postFailed: boolean,
-    dataPost: IOrder;
-}
-const initialState: IPost = {
-    postRequest: false,
-    postFailed: false,
-    dataPost: {},
-}
 describe('postReducer', () => {
     it('POST_DATA', () => {
         const action = {

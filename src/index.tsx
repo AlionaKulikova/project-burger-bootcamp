@@ -4,7 +4,7 @@ import App from "./components/App/App";
 import { Provider } from "react-redux";
 import { rootReducer } from "./services/reducers/index";
 import { configureStore } from "@reduxjs/toolkit";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { socketMiddleware } from '../src/middleware/socketMiddleware';
 import {
    WS_CONNECTION_START,
@@ -51,8 +51,8 @@ const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 
 root.render(
    <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
          <App />
-      </BrowserRouter>
+      </HashRouter>
    </Provider>
 );

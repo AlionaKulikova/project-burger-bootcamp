@@ -25,7 +25,7 @@ interface IPostLogin {
   useParam: string | undefined,
 }
 
-const initialState: IPostLogin = {
+export const initialState: IPostLogin = {
   postRequest: false,
   postFailed: false,
   dataPost: {},

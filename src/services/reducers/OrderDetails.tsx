@@ -8,7 +8,7 @@ interface IPost {
   dataPost: IOrder;
 }
 
-const initialState: IPost = {
+export const initialState: IPost = {
   postRequest: false,
   postFailed: false,
   dataPost: {},

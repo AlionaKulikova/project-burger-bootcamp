@@ -1,17 +1,7 @@
 import { postRegister } from '../reducers/Register';
 import { POST_DATA_REGISTER, GET_FAILED_REGISTER, GET_POST_SUCCESS_REGISTER } from '../actions/Register';
+import { initialState } from './Register';
 
-
-interface IPostRegister {
-    postRequest: boolean,
-    postFailed: boolean,
-    dataPost: {},
-}
-const initialState: IPostRegister = {
-    postRequest: false,
-    postFailed: false,
-    dataPost: {},
-}
 
 describe('postRegister', () => {
     it('POST_DATA_REGISTER', () => {

@@ -6,7 +6,7 @@ import { patchDataUser } from "../../services/actions/EditProfile";
 import { NavLink } from 'react-router-dom';
 import { loginEsc } from "../../services/actions/LoginEsc";
 import type { } from 'redux-thunk/extend-redux';
-import { removeCookie } from 'typescript-cookie'
+import { removeCookie } from 'typescript-cookie';
 
 
 export const ProfilePage: FC = () => {

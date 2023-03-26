@@ -5,7 +5,7 @@ import { AppActions } from "../../utils/types";
 import { TConstructorIngredient } from "../../utils/types";
 
 
-const initialState: Array<TConstructorIngredient> = [];
+export const initialState: Array<TConstructorIngredient> = [];
 
 export const dataConstructor = (state = initialState, action: AppActions): Array<TConstructorIngredient> => {
   switch (action.type) {

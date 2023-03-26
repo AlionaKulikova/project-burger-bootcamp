@@ -3,26 +3,8 @@ import { ADD_INGREDIENT_DETAL } from "../actions/BurgerIngredient";
 import { DELETE_INGREDIENT_DETAL } from "../actions/BurgerIngredient";
 import { ADD_ORDER_DETAL } from "../actions/ComponentOrderDetails";
 import { ADD_PROFILE_ORDER_DETAL } from '../../utils/types';
-import { TBurgerIngredient } from "../../utils/types"
+import { initialState } from "./BurgerIngredient";
 
-
-interface IDataIngredients {
-    feedRequest: boolean,
-    feedFailed: boolean,
-    dataIngredient: {} | TBurgerIngredient,
-    openModal: boolean,
-    openOrderDetalModal: boolean,
-    openProfileOrderDetalModal: boolean,
-};
-
-const initialState: IDataIngredients = {
-    feedRequest: false,
-    feedFailed: false,
-    dataIngredient: {},
-    openModal: false,
-    openOrderDetalModal: false,
-    openProfileOrderDetalModal: false,
-};
 
 describe('dataIngredientsReducer', () => {
     it('ADD_INGREDIENT_DETAL', () => {

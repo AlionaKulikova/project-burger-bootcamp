@@ -1,5 +1,6 @@
 import { checkResponse } from "../../utils/utils";
 import { AppDispatch, AppThunk } from "../../utils/types";
+import { baseUrl } from "../../utils/utils";
 export const POST_DATA_TOKEN: "POST_DATA_TOKEN" = "POST_DATA_TOKEN";
 export const GET_NEW_TOKEN: "GET_NEW_TOKEN" = "GET_NEW_TOKEN";
 export const GET_FAILED_TOKEN: "GET_FAILED_TOKEN" = "GET_FAILED_TOKEN";
@@ -15,7 +16,7 @@ export const getNewToken = (refreshToken: string | null): AppThunk => {
       text: "по умолчанию post",
     });
 
-    fetch('https://norma.nomoreparties.space/api/auth/token', {
+    fetch(`${baseUrl}/api/auth/token`, {
       method: "POST",
       headers: {
         "authorization": refreshToken || '',

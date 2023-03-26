@@ -25,12 +25,11 @@ type Props = {
   },
 }
 
-
 export const BurgerIngredient: FC<Props> = ({ data }) => {
   
   let location = useLocation();
   const dispatch = useDispatch();
-  const { ingredients } = useSelector((state:any) => ({
+  const { ingredients } = useSelector((state) => ({
     ingredients: state.dataConstructor,
   }));
   const dataIngredient = data;
@@ -40,10 +39,10 @@ export const BurgerIngredient: FC<Props> = ({ data }) => {
   const counter = getCount(idBurgerIngredient, ingredients, counterIngredient);
   const image = <img src={data.image} alt={data.name} />;
 
-  function getCount(evt: string, item: [], counterIngredient: number) {
+  function getCount(evt: string, item:TConstructorIngredient[], counterIngredient: number) {
     let i = 0;
     {
-      item.map((card: TConstructorIngredient) => (card.id.data._id === evt ? (i = i + 1) : counterIngredient));
+      item.map((card) => (card.id.data._id === evt ? (i = i + 1) : counterIngredient));
     }
     return i;
   }

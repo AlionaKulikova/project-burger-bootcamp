@@ -27,7 +27,7 @@ type Props = {
 
 export const StatusOrders: FC<Props> = ({ arrayOrders }) => {
 
-  const { orders } = useSelector((state: any) => ({
+  const { orders } = useSelector((state) => ({
     orders: state.wsReducer.orders,
   }));
 
@@ -40,7 +40,7 @@ export const StatusOrders: FC<Props> = ({ arrayOrders }) => {
             <>
               <div className={styles.orders_box}>
                 {
-                  arrayOrders?.some((order: TArray) => order.status === 'done') && (
+                  arrayOrders?.some((order) => order.status === 'done') && (
                     <div className={styles.orders}>
                       <div className={styles.ready}>
                         <p className="text text_type_main-medium">
@@ -51,7 +51,7 @@ export const StatusOrders: FC<Props> = ({ arrayOrders }) => {
                         <div className={styles.oneTable}>
                           <ul className={styles.list_inwork}>
                             {
-                              arrayOrders.map((order: TArray, key: number) => {
+                              arrayOrders.map((order, key) => {
                                 if (key < 5 && order.status === 'done') {
                                   return (<li key={key} className="text text_type_digits-default">
                                     {order.number}
@@ -65,7 +65,7 @@ export const StatusOrders: FC<Props> = ({ arrayOrders }) => {
                         <div>
                           <ul className={styles.list_inwork}>
                             {
-                              arrayOrders.map((order: TArray, key: number) => {
+                              arrayOrders.map((order, key) => {
                                 if (key >= 5 && key < 10 && order.status === 'done') {
                                   return (<li key={key} className="text text_type_digits-default">
                                     {order.number}
@@ -85,10 +85,10 @@ export const StatusOrders: FC<Props> = ({ arrayOrders }) => {
                     В работе:
                   </p>
                   {
-                    arrayOrders.some((order: TArray) => order.status === 'pending') && (
+                    arrayOrders.some((order) => order.status === 'pending') && (
                       <ul className={styles.list_ready}>
                         {
-                          arrayOrders.map((order: TArray, key: number) => {
+                          arrayOrders.map((order, key) => {
                             if (key < 5 && order.status === 'pending') {
                               return (<li key={key} className="text text_type_digits-default">
                                 {order.number}

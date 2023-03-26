@@ -1,20 +1,6 @@
 import { postForgotPasswordReducer } from '../reducers/ForgotPassword';
 import { POST_DATA_FORGOT_PASSWORD, GET_FAILED_FORGOT_PASSWORD, GET_POST_SUCCESS_FORGOT_PASSWORD } from '../actions/ForgotPassword';
-
-
-export interface IPostForgotPassword {
-    postRequest: boolean,
-    postFailed: boolean,
-    dataPost: {},
-    buttonClick: boolean,
-}
-const initialState: IPostForgotPassword = {
-    postRequest: false,
-    postFailed: false,
-    dataPost: {},
-    buttonClick: false,
-}
-
+import {initialState } from './ForgotPassword';
 
 describe('postForgotPasswordReducer', () => {
     it('POST_DATA_FORGOT_PASSWORD', () => {

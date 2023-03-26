@@ -1,17 +1,6 @@
 import { getUser } from '../reducers/ProfileUser';
 import { GET_DATA_USER, GET_FAILED_USER, GET_SUCCESS_USER } from '../actions/ProfileUser';
-
-
-interface IGetUser {
-    getRequest: boolean,
-    getFailed: boolean,
-    dataGet: {},
-}
-const initialState: IGetUser = {
-    getRequest: false,
-    getFailed: false,
-    dataGet: {},
-}
+import { initialState } from './ProfileUser';
 
 describe('postReducer', () => {
     it('GET_DATA_USER', () => {

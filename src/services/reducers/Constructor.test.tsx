@@ -2,10 +2,7 @@ import { dataConstructor } from './Constructor'
 import { ADD_CONSTRUCTOR_COMPONENT } from "../actions/Constructor";
 import { DELETE_CONSTRUCTOR_COMPONENT } from "../actions/Constructor";
 import { CONSTRUCTER_ORDER } from "../actions/Constructor";
-import { TConstructorIngredient } from "../../utils/types";
-
-
-const initialState: Array<TConstructorIngredient> = [];
+import { initialState } from "./Constructor";
 
 describe('dataConstructor', () => {
     it('ADD_CONSTRUCTOR_COMPONENT', () => {

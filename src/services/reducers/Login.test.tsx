@@ -4,46 +4,8 @@ import { POST_DATA_TOKEN, GET_NEW_TOKEN, GET_FAILED_TOKEN } from '../../utils/ty
 import { PUTCH_DATA_LOGIN, PUTCH_FAILED_LOGIN, PUTCH_SUCCESS_LOGIN } from '../actions/EditProfile';
 import { ESC_DATA_LOGIN, ESC_FAILED_LOGIN, ESC_SUCCESS_LOGIN } from '../actions/LoginEsc';
 import { USER_DETAL_URL } from '../../utils/types';
+import { initialState } from './Login';
 
-
-interface IPostLogin {
-  postRequest: boolean,
-  postFailed: boolean,
-  dataPost: {},
-  nameUser: string,
-  emailUser: string,
-  tokenAccess: string,
-  tokenRefresh: string,
-  tokenRequest: boolean,
-  tokenFailed: boolean,
-  dataPatch: {},
-  userPassword: string,
-  escRequest: boolean,
-  escFailed: boolean,
-  prevname: string,
-  prevemail: string,
-  prevpassword: string,
-  useParam: string | undefined,
-}
-const initialState: IPostLogin = {
-  postRequest: false,
-  postFailed: false,
-  dataPost: {},
-  nameUser: '',
-  emailUser: '',
-  tokenAccess: '',
-  tokenRefresh: '',
-  tokenRequest: false,
-  tokenFailed: false,
-  dataPatch: {},
-  userPassword: '',
-  escRequest: false,
-  escFailed: false,
-  prevname: '',
-  prevemail: '',
-  prevpassword: '',
-  useParam: '',
-}
 
 describe('postLogin', () => {
   it('POST_DATA_LOGIN', () => {

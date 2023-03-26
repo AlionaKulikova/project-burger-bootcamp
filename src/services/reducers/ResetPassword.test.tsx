@@ -1,17 +1,7 @@
 import { postResetPasswordReducer } from '../reducers/ResetPassword';
 import { POST_DATA_RESET_PASSWORD, GET_FAILED_RESET_PASSWORD, GET_POST_SUCCESS_RESET_PASSWORD } from '../actions/ResetPassword';
+import { initialState } from './ResetPassword';
 
-
-interface IPostResetPassword {
-    postRequest: boolean,
-    postFailed: boolean,
-    dataPost: {},
-}
-const initialState: IPostResetPassword = {
-    postRequest: false,
-    postFailed: false,
-    dataPost: {},
-}
 
 describe('postResetPasswordReducer', () => {
     it('POST_DATA_RESET_PASSWORD', () => {

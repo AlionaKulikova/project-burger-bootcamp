@@ -15,7 +15,7 @@ interface IDataIngredients {
 };
 
 
-const initialState: IDataIngredients = {
+export const initialState: IDataIngredients = {
     feedRequest: false,
     feedFailed: false,
     dataIngredient: {},

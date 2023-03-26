@@ -17,9 +17,11 @@ export const OrdersList: FC = () => {
     dispatch({
       type: WS_CONNECTION_START,
     });
-    dispatch({
-      type: WS_USER_CONNECTION_CLOSED,
-    });
+    return () => {
+      dispatch({
+        type: WS_USER_CONNECTION_CLOSED,
+      });
+    }
   }, []);
 
   return (

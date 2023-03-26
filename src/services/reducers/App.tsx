@@ -8,7 +8,7 @@ export interface IData {
   feed: TIngredient[],
 };
 
-const initialState: IData = {
+export const initialState: IData = {
   feedRequest: false,
   feedFailed: false,
   feed: [],

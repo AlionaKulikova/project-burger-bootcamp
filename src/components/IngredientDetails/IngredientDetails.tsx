@@ -3,7 +3,6 @@ import { useSelector } from '../../utils/hooks';
 import styles from "./styles.module.css";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { TIngredient } from "../../utils/types"
 
 
 export const IngredientDetails: FC = () => {
@@ -13,7 +12,7 @@ export const IngredientDetails: FC = () => {
     feed: state.dataReducer,
   }));
   const { id } = useParams();
-  const targetIngredient = feed.feed.find((item: TIngredient) => item._id === id);
+  const targetIngredient = feed.feed.find((item) => item._id === id);
 
   return (
     <>

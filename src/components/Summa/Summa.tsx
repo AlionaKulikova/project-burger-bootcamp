@@ -2,11 +2,9 @@ import { FC } from "react";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./styles.module.css";
 
-
 type Props = {
   sum: number,
 }
-
 
 export const Summa: FC<Props> = ({ sum }) => {
   return (

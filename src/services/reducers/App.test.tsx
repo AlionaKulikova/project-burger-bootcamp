@@ -1,19 +1,6 @@
-import { dataReducer } from '../reducers/App'
-import { TIngredient } from "../../utils/types";
+import { dataReducer } from '../reducers/App';
 import { GET_FEED, GET_FAILED, GET_FEED_SUCCESS } from "../actions/App";
-
-
-export interface IData {
-    feedRequest: boolean,
-    feedFailed: boolean,
-    feed: TIngredient[],
-};
-
-const initialState: IData = {
-    feedRequest: false,
-    feedFailed: false,
-    feed: [],
-};
+import { initialState } from "./App";
 
 describe('dataReducer', () => {
     it('GET_FEED', () => {

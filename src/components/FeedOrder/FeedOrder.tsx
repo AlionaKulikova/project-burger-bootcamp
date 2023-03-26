@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { ADD_DATA_ORDER } from "../../utils/types";
 import type { } from 'redux-thunk/extend-redux';
 import { WS_CONNECTION_START } from '../../utils/types';
-
+import { WS_USER_CONNECTION_CLOSED } from '../../utils/types';
 
 export const FeedOrder: FC = () => {
 
@@ -26,6 +26,11 @@ export const FeedOrder: FC = () => {
       type: ADD_DATA_ORDER,
       targetOrderId: targetOrderId,
     })
+    return () => {
+      dispatch({
+        type: WS_USER_CONNECTION_CLOSED,
+      });
+    }
   }, [])
 
   let location = useLocation();
@@ -37,7 +42,7 @@ export const FeedOrder: FC = () => {
   const arrayOrders = orders.orders;
   const { id } = useParams();
   const orderId = arrayOrders?.find((item) => item._id === id);
-  const arrayId: string[] | undefined = orderId?.ingredients;
+  const arrayId = orderId?.ingredients;
 
   function editDate(item: string) {
     return new Date(item).toLocaleString()
@@ -46,7 +51,7 @@ export const FeedOrder: FC = () => {
   const { allIngredients } = useSelector((state) => ({
     allIngredients: state.dataReducer.feed,
   }));
-  const findIngredient = arrayId?.map((orderIngredient: string) => allIngredients.find((ingredient) => ingredient._id === orderIngredient));
+  const findIngredient = arrayId?.map((orderIngredient) => allIngredients.find((ingredient) => ingredient._id === orderIngredient));
   const sumOrders = () => {
     let summa = 0;
     arrayId?.forEach((itemIdIngredient) => {

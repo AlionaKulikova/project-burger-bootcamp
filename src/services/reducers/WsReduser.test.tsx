@@ -1,5 +1,5 @@
 import { wsReducer } from '../reducers/WsReduser';
-import type { IMessage } from '../../utils/types';
+import { initialState } from './WsReduser';
 import {
     WS_CONNECTION_START,
     WS_CONNECTION_SUCCESS,
@@ -15,35 +15,6 @@ import {
     WS_USER_CONNECTION_CLOSED,
     WS_USER_GET_MESSAGE,
 } from '../../utils/types';
-
-type TWSState = {
-    wsConnected: boolean,
-    error?: Event,
-    orders: IMessage,
-    totalToday: number,
-    total: number,
-    targetOrderId: {} | undefined,
-    user: IMessage;
-}
-
-const initialState: TWSState = {
-    wsConnected: false,
-    orders: {
-        orders: [],
-        success: false,
-        total: 0,
-        totalToday: 0,
-    },
-    total: 0,
-    totalToday: 0,
-    targetOrderId: {},
-    user: {
-        orders: [],
-        success: false,
-        total: 0,
-        totalToday: 0,
-    },
-};
 
 describe('wsReducer', () => {
     it('WS_CONNECTION_START', () => {
