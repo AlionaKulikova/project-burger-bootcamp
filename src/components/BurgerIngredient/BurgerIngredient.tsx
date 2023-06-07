@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./styles.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from '../../utils/hooks';
 import { ADD_INGREDIENT_DETAL } from "../../services/actions/BurgerIngredient";
 import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import { TConstructorIngredient } from "../../utils/types";
-
+import { useDispatch } from "../../utils/hooks";
 
 type Props = {
   data: {
@@ -25,12 +25,11 @@ type Props = {
   },
 }
 
-
 export const BurgerIngredient: FC<Props> = ({ data }) => {
-
+  
   let location = useLocation();
   const dispatch = useDispatch();
-  const { ingredients } = useSelector((state: any) => ({
+  const { ingredients } = useSelector((state) => ({
     ingredients: state.dataConstructor,
   }));
   const dataIngredient = data;
@@ -40,16 +39,16 @@ export const BurgerIngredient: FC<Props> = ({ data }) => {
   const counter = getCount(idBurgerIngredient, ingredients, counterIngredient);
   const image = <img src={data.image} alt={data.name} />;
 
-  function getCount(evt: string, item: [], counterIngredient: number) {
+  function getCount(evt: string, item:TConstructorIngredient[], counterIngredient: number) {
     let i = 0;
     {
-      item.map((card: TConstructorIngredient) => (card.id.data._id === evt ? (i = i + 1) : counterIngredient));
+      item.map((card) => (card.id.data._id === evt ? (i = i + 1) : counterIngredient));
     }
     return i;
   }
 
   const openModal = () => {
-    dispatch(
+        dispatch(
       {
         type: ADD_INGREDIENT_DETAL,
         dataIngredient,
@@ -58,7 +57,7 @@ export const BurgerIngredient: FC<Props> = ({ data }) => {
   }
 
   return (
-    <div>
+    <div id="drag">
       <div className="ml=4 mt=6 mr=6 mb=10">
         <div className={styles.info_ingredient} onClick={openModal}>
           <Link to={`/ingredients/${idBurgerIngredient}`}

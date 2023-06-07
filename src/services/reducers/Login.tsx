@@ -1,8 +1,9 @@
 import { POST_DATA_LOGIN, GET_FAILED_LOGIN, GET_POST_SUCCESS_LOGIN, USER_PASSWORD } from '../actions/Login';
-import { POST_DATA_TOKEN, GET_NEW_TOKEN, GET_FAILED_TOKEN } from '../actions/GetNewToken';
+import { POST_DATA_TOKEN, GET_NEW_TOKEN, GET_FAILED_TOKEN } from '../../utils/types';
 import { PUTCH_DATA_LOGIN, PUTCH_FAILED_LOGIN, PUTCH_SUCCESS_LOGIN } from '../actions/EditProfile';
 import { ESC_DATA_LOGIN, ESC_FAILED_LOGIN, ESC_SUCCESS_LOGIN } from '../actions/LoginEsc';
-import { AnyAction } from 'redux';
+import { USER_DETAL_URL } from '../../utils/types';
+import { AppActions } from '../../utils/types';
 
 interface IPostLogin {
   postRequest: boolean,
@@ -12,7 +13,6 @@ interface IPostLogin {
   emailUser: string,
   tokenAccess: string,
   tokenRefresh: string,
-  refreshTokenUser: string,
   tokenRequest: boolean,
   tokenFailed: boolean,
   dataPatch: {},
@@ -22,9 +22,10 @@ interface IPostLogin {
   prevname: string,
   prevemail: string,
   prevpassword: string,
+  useParam: string | undefined,
 }
 
-const initialState: IPostLogin = {
+export const initialState: IPostLogin = {
   postRequest: false,
   postFailed: false,
   dataPost: {},
@@ -32,7 +33,6 @@ const initialState: IPostLogin = {
   emailUser: '',
   tokenAccess: '',
   tokenRefresh: '',
-  refreshTokenUser: '',
   tokenRequest: false,
   tokenFailed: false,
   dataPatch: {},
@@ -42,9 +42,10 @@ const initialState: IPostLogin = {
   prevname: '',
   prevemail: '',
   prevpassword: '',
+  useParam: '',
 }
 
-export const postLogin = (state = initialState, action: AnyAction): IPostLogin => {
+export const postLogin = (state = initialState, action: AppActions): IPostLogin => {
 
   switch (action.type) {
     case POST_DATA_LOGIN: {
@@ -62,7 +63,6 @@ export const postLogin = (state = initialState, action: AnyAction): IPostLogin =
         emailUser: action.dataPost.user.email,
         tokenAccess: action.dataPost.accessToken,
         tokenRefresh: action.dataPost.refreshToken,
-        refreshTokenUser: action.refreshTokenUser,
         postRequest: false,
         prevname: action.dataPost.user.name,
         prevemail: action.dataPost.user.email,
@@ -126,7 +126,6 @@ export const postLogin = (state = initialState, action: AnyAction): IPostLogin =
       return {
         ...state,
         userPassword: action.password,
-        prevpassword: action.password,
 
       };
     }
@@ -156,6 +155,14 @@ export const postLogin = (state = initialState, action: AnyAction): IPostLogin =
         escRequest: false
       };
     }
+
+    case USER_DETAL_URL: {
+      return {
+        ...state,
+        useParam: action.useParam,
+      };
+    }
+
     default: {
       return state
     }

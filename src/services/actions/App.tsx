@@ -1,11 +1,12 @@
 import { checkResponse } from "../../utils/utils";
 import { AppDispatch, AppThunk } from "../../utils/types";
+import { baseUrl } from "../../utils/utils";
 
-export const GET_FEED = "GET_FEED";
-export const GET_FAILED = "GET_FAILED";
-export const GET_FEED_SUCCESS = "GET_FEED_SUCCESS";
+export const GET_FEED:"GET_FEED" = "GET_FEED";
+export const GET_FAILED:"GET_FAILED" = "GET_FAILED";
+export const GET_FEED_SUCCESS:"GET_FEED_SUCCESS" = "GET_FEED_SUCCESS";
 export const config = {
-  baseUrl: "https://norma.nomoreparties.space/api",
+  baseUrl: `${baseUrl}/api`,
   headers: {
     authorization: "e91d2d7a-7934-4811-b5d2-d42326a1cfb9",
     "Content-Type": "application/json",

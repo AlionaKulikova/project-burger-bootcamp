@@ -3,9 +3,9 @@ import { checkResponse } from "../../utils/utils";
 
 import { AppDispatch, AppThunk } from "../../utils/types";
 
-export const PUTCH_DATA_LOGIN = "PUTCH_DATA_LOGIN";
-export const PUTCH_FAILED_LOGIN = "PUTCH_FAILED_LOGIN";
-export const PUTCH_SUCCESS_LOGIN = "PUTCH_SUCCESS_LOGIN";
+export const PUTCH_DATA_LOGIN:"PUTCH_DATA_LOGIN" = "PUTCH_DATA_LOGIN";
+export const PUTCH_FAILED_LOGIN:"PUTCH_FAILED_LOGIN" = "PUTCH_FAILED_LOGIN";
+export const PUTCH_SUCCESS_LOGIN:"PUTCH_SUCCESS_LOGIN" = "PUTCH_SUCCESS_LOGIN";
 
 
 export const patchDataUser = (tokenAccess: string, name: string, email: string, password: string): AppThunk => {

@@ -1,27 +1,25 @@
 import { useEffect, FC } from "react";
-
 import done from "../../images/done.svg";
 import styles from "./styles.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from '../../utils/hooks';
 import { sendData } from "../../services/actions/OrderDetails";
-import { TIngredient } from "../../utils/types";
 import type { } from 'redux-thunk/extend-redux';
-import { TConstructorIngredient } from "../../utils/types";
 
 const OrderDetails: FC = () => {
 
-  const { dataConstructor } = useSelector((state: any) => ({
+  const { dataConstructor } = useSelector((state) => ({
     dataConstructor: state.dataConstructor,
   }));
-  const idConstructorForPost = dataConstructor.map((item: TConstructorIngredient) => item.arr._id);
+  const idConstructorForPost = dataConstructor.map((item) => item.arr._id);
   const dispatch = useDispatch();
 
-  const { dataPost, postRequest } = useSelector((state: any) => ({
+  const { dataPost, postRequest } = useSelector((state) => ({
     dataPost: state.postReducer.dataPost,
     postRequest: state.postReducer.postRequest,
+  
   }));
-
-  const { tokenAccess } = useSelector((state: any) => ({
+ 
+  const { tokenAccess } = useSelector((state) => ({
     tokenAccess: state.postLogin.tokenAccess,
   }));
 

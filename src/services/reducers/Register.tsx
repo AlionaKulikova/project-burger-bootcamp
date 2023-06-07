@@ -7,7 +7,7 @@ interface IPostRegister {
   dataPost: {},
 }
 
-const initialState: IPostRegister = {
+export const initialState: IPostRegister = {
   postRequest: false,
   postFailed: false,
   dataPost: {},

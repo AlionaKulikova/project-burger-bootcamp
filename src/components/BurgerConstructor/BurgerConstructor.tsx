@@ -4,17 +4,15 @@ import styles from "./styles.module.css";
 import Modal from "../Modal/Modal";
 import React, { useMemo, FC } from "react";
 import OrderDetails from "../OrderDetails/OrderDetails";
-import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 import { ADD_CONSTRUCTOR_COMPONENT } from "../../services/actions/Constructor";
 import { Summa } from "../Summa/Summa";
 import { useNavigate } from "react-router-dom";
-import { TConstructorIngredient } from "../../utils/types";
-
+import { useSelector, useDispatch } from '../../utils/hooks'
 
 export const BurgerConstructor: FC = () => {
 
-  const { nameUser } = useSelector((state: any) => ({
+  const { nameUser } = useSelector((state) => ({
     nameUser: state.postLogin.nameUser,
   }));
 
@@ -34,7 +32,7 @@ export const BurgerConstructor: FC = () => {
     setIsOrderModalOpen(false);
   };
 
-  const { dataconstructor } = useSelector((state: any) => ({
+  const { dataconstructor } = useSelector((state) => ({
     dataconstructor: state.dataConstructor,
   }));
 
@@ -66,22 +64,22 @@ export const BurgerConstructor: FC = () => {
 
   const sumIngredients = useMemo(() => {
     let i = 0;
-    dataconstructor.map((item: TConstructorIngredient) =>
+    dataconstructor.map((item) =>
       item.id.data.type === "bun" ? i += item.id.data.price * 2 : i += item.id.data.price
     );
     return i;
   }, [dataconstructor]);
 
   return (
-    <div className={styles.box_two}>
+    <div className={styles.box_two} id="drop">
       <div className={`${styles.box_two_filling} mt-25`}>
         <div className="mr-4">
-          <div className="ml-8">{dataconstructor.map((item: TConstructorIngredient) => item.id.data.type === "bun" && <ConstructorElement key={item.id.data._id} type="top" isLocked={true} text={`${item.id.data.name}` + `(верх)`} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
+          <div className="ml-8">{dataconstructor.map((item) => item.id.data.type === "bun" && <ConstructorElement key={item.id.data._id} type="top" isLocked={true} text={`${item.id.data.name}` + `(верх)`} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
         </div>
         <div ref={drop} className={styles.select_components}>
-          <div>{dataconstructor.map((card: TConstructorIngredient, index: number) => card.id.data.type !== "bun" && <ConstructorComponent key={card.randomId} data={card} draggable={true} index={index} />)}</div>
+          <div>{dataconstructor.map((card, index) => card.id.data.type !== "bun" && <ConstructorComponent key={card.randomId} data={card} draggable={true} index={index} />)}</div>
         </div>
-        <div className="ml-8">{dataconstructor.map((item: TConstructorIngredient) => item.id.data.type === "bun" && <ConstructorElement key={item.id.data._id} type="bottom" isLocked={true} text={`${item.id.data.name}` + `(низ)`} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
+        <div className="ml-8">{dataconstructor.map((item) => item.id.data.type === "bun" && <ConstructorElement key={item.id.data._id} type="bottom" isLocked={true} text={`${item.id.data.name}` + `(низ)`} price={item.id.data.price} thumbnail={item.id.data.image} />)}</div>
       </div>
       <div className={`${styles.checkout_box} mt-10 mr-4`}>
         <Summa sum={sumIngredients} />
