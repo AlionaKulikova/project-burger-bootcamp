@@ -32,3 +32,18 @@
 <img src="https://sun9-5.userapi.com/impg/og-w5_GEf4jEny-wBCxpr7k4vWoM2GXoSV-RNw/yq__LpeBphc.jpg?size=1254x960&quality=95&sign=422177f86959bce03ce7d92368aa8a95&type=album" align="center" style="width: 60%" />
 </div>  
   
+  
+ ### Проект запускается локально по адресу http://localhost:3000/
+ ### Необходимо склонировать репозиторий.
+ ### Последовательно запустить команды в терминале (должны быть установлены программы Git, NodeJS и менеджер пакетов npm
+- cd react-burger)
+- npm install
+- npm run start
+- npm test //тестирование
+- npm run cypress:open //тестирование
+
+ ### В каталоге проекта вы можете запустить:
+-	npm start - запустить проект,
+-	npm test - протестировать проект,
+-	npm run build - собрать проект.
+
