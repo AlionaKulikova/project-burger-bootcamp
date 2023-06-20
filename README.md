@@ -42,7 +42,7 @@
  - npm install
  - npm run start
  - npm test //тестирование
- - npm run cypress:open //тестирование
+ - npx cypress open //тестирование
 <br/>
 
 4. В каталоге проекта вы можете запустить:
